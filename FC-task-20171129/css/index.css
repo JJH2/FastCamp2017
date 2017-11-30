@@ -1,0 +1,418 @@
+@charset "utf-8";
+@import url("./fonts.css");
+
+
+/* 텍스트 감추기 */
+.a11y {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+}
+/* 메인 컨텐츠 패딩 클래스 */
+.padding-left {
+    padding-left: 120px;
+}
+
+
+body {
+    width: 100%;
+    background: #aaa;
+}
+.container {
+    width: 960px;
+    margin: auto;
+    background: #fff;
+    padding-bottom: 45px;
+}
+/* header */
+.header {
+    padding-top: 130px;
+}
+
+.header__headline {
+
+}
+
+.header__headline__info {
+    position: relative;
+}
+
+.header__headline__info > span:nth-of-type(1) {
+    font-size: 12px;
+    font-family: "Oswald Bold";
+    line-height: 1.5;
+    letter-spacing: 1.2px;
+    color: #1f4ba5;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.header__headline__info > span:nth-of-type(2) {
+    font-size: 12px;
+    font-family: "PT_Serif Italic";
+    line-height: 1.5;
+    color: #b8b8b8;
+    position: absolute;
+    top: 0;
+    left: 80px;
+}
+.header__headline__info > span:nth-of-type(3) {
+    font-size: 10px;
+    font-family: "Oswald Bold";
+    line-height: 1.5;
+    letter-spacing: 1px;
+    color: #868686;
+    position: absolute;
+    top: 0;
+    left: 615px;
+}
+.header__headline__info > span:nth-of-type(3) > span {
+    font-size: 10px;
+    font-family: "PT_Serif Italic";
+    line-height: 1.5;
+    letter-spacing: 1px;
+    color: #868686;
+}
+.header__headline__heading {
+    font-family: "Varela Round Regular";
+    width: 480px;
+    font-size: 48px;
+    padding-top: 30px;
+}
+
+.header__headline > p {
+    width: 570px;
+    padding-top: 50px;
+    font-family: "PT_Serif Italic";
+    font-size: 24px;
+    line-height: 1.5;
+    color: #868686;
+    position: relative;
+}
+.header__headline > p::before {
+    content: "";
+    position: absolute;
+    top: 61px;
+    left: -31px;
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-image: url("./../images/bookmark.png");
+}
+/* //header */
+
+/* content__01 */
+.content__01 {
+    padding-top: 45px;
+}
+.content__01 > figure {
+
+}
+.content__01 > figure > figcation {
+    display: inline-block;
+    padding-top: 30px;
+    padding-left: 120px;
+    font-family: "PT_Serif Italic";
+    font-size: 12px;
+    line-height: 1.5;
+    color: #b8b8b8;
+}
+.content__01 > p {
+    width: 600px;
+    padding-top: 50px;
+    font-size: 16px;
+    line-height: 1.88;
+    font-family: "Varela Round Regular";
+    color: #868686;
+}
+
+.content__01--carousel {
+    padding-top: 60px;
+}
+.content__01--carousel > figure {
+
+    float: left;
+    text-align: center;
+}
+.content__01--carousel > figure > img {
+    
+}
+.content__01--carousel > figure > figcaption {
+    padding-top: 20px;
+    font-size: 12px;
+    font-family: "PT_Serif Italic";
+    line-height: 1.5;
+    color: #b8b8b8;
+}
+.content__01--carousel__button {
+    clear: both;
+    padding-top: 25px;
+    overflow: hidden;
+}
+.content__01--carousel__button > button {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    margin: 0;
+    float: left;
+    border-radius: 0;
+}
+.content__01--carousel__button > button:nth-child(1) {
+    border-right: none;
+}
+.content__01--carousel__button > button:nth-of-type(1) {
+    background-image: url("./../images/prev.png");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+.content__01--carousel__button > button:nth-of-type(2) {
+    background-image: url("./../images/next.png");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+.content__01--carousel__button > span {
+    font-size: 14px;
+    display: inline-block;
+    color: #868686;
+    padding-left: 30px;
+    height: 60px;
+    line-height: 60px;
+    font-family: "Varela Round Regular";
+}
+.content__01--carousel__button > span > span {
+    font-size: 10px;
+    vertical-align: top;
+    display: inline-block;
+    line-height: 52px;
+}
+/* //content__01 */
+
+/* content__02 */
+.content__02 {
+    padding-top: 50px;
+}
+.content__02__heading {
+    width: 550px;
+    font-size: 30px;
+    font-family: "Varela Round Regular";
+    color: #222222;
+}
+.content__02 > p {
+    width: 600px;
+    padding-top: 50px;
+    font-size: 16px;
+    line-height: 1.88;
+    font-family: "Varela Round Regular";
+    color: #868686;
+}
+.content__02__quote {
+    padding-top: 50px;
+}
+.content__02__quote > div {
+
+}
+.content__02__quote > div::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.content__02__quote > div > p {
+    float: left;
+    width: 400px;
+    font-size: 18px;
+    font-family: "PT_Serif Italic";
+    line-height: 1.67;
+    position: relative;
+}
+.content__02__quote > div > p::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-image: url("./../images/quote.png");
+    background-repeat: no-repeat;
+    top: 8px;
+    left: -31px;
+}
+.profile {
+    float: left;
+    padding-left: 45px;
+}
+.profile > img {
+    display: block;
+    border-radius: 50%;
+}
+.profile > span:nth-of-type(1) {
+    display: block;
+    font-family: "Varela Round Regular";
+    font-size: 14px;
+    line-height: 1.14;
+    padding-top: 20px;
+}
+.profile > span:nth-of-type(2) {
+    display: block;
+    font-size: 12px;
+    font-family: "PT_Serif Italic";
+    line-height: 1.5;
+    padding-top: 10px;;
+    color: #b8b8b8;
+}
+.profile::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.content__02__quote > p {
+    width: 600px;
+    padding-top: 50px;
+    font-size: 16px;
+    line-height: 1.88;
+    color: #868686;
+}
+/* //content__02 */
+
+/* content__03 */
+.content__03 {
+    padding-top: 50px;
+}
+.content__03__video {
+    width: 600px;
+    text-align: center;
+    position: relative;
+}
+.content__03__video > img:nth-child(2) {
+    position: absolute;
+    top: 206px;
+    left: 60px;
+}
+.content__03__video > span:nth-of-type(1) {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    opacity: 0.5;
+    font-size: 12px;
+    
+}
+.content__03__video > span:nth-of-type(2) {
+    display: inline-block;
+    padding-top: 20px;
+    font-size: 12px;
+    font-family: "PT_Serif Italic";
+    line-height: 1.5;
+    color: #b8b8b8;
+}
+
+.content__03__row {
+    padding-top: 50px;
+    overflow: hidden;
+    font-family: "Varela Round Regular";
+}
+.content__03__row__col01 {
+    float: left;
+    width: 300px;
+}
+.content__03__row__col01 > h2 {
+    width: 240px;
+    font-size: 18px;
+    text-align: left;
+    color: #222222;
+}
+.content__03__row__col01 > p {
+    padding-top: 25px;
+    font-size: 16px;
+    line-height: 1.88;
+    color: #868686;
+}
+.content__03__row__col02 {
+    float: left;
+    width: 300px;
+    padding-left: 50px;
+}
+.content__03__row__col02 > h2 {
+    width: 240px;
+    font-size: 18px;
+    text-align: left;
+    color: #222222;
+}
+.content__03__row__col02 > p {
+    padding-top: 25px;
+    font-size: 16px;
+    line-height: 1.88;
+    color: #868686;
+}
+.footer {
+    padding-top: 50px;
+}
+.footer__sns {
+    overflow: hidden;
+}
+.footer__sns > li {
+    float: left;
+    margin-left: 15px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 15% 50%;
+    border-radius: 15px;
+}
+.footer__sns > li:nth-of-type(1) {
+    margin-left: 0;
+    background-color: #215b9a;
+    background-image: url("./../images//facebook.png");
+
+}
+.footer__sns > li:nth-of-type(2) {
+    background-color: #00adf2;
+    background-image: url("./../images/twitter.png");
+}
+.footer__sns > li:nth-of-type(3) {
+    background-color: #ce4435;
+    background-image: url("./../images/google+.png");
+}
+.footer__sns > li:nth-of-type(4) {
+    background-color: #e51616;
+    background-image: url("./../images/pinterest.png");
+}
+.footer__sns > li > a {
+    width: 85px;
+    height: 30px;
+    display: block;
+    text-decoration: none;
+}
+.footer__sns > li > a > span {
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    font-family: "Oswald Bold";
+    padding-left: 43px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+.footer > div {
+    padding-top: 45px;
+}
+.footer > div > span {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #1f4ba5;
+    font-family: "Varela Round Regular";
+    padding-left: 20px;
+    position: relative;
+}
+.footer > div > span::before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 2px;
+    left: 0px;
+    background-image: url("./../images/back.png");
+    background-repeat: no-repeat;
+}
