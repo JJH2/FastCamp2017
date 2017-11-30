@@ -1,0 +1,855 @@
+@charset "UTF-8";
+@import url("./normalize.css");
+@import url("./fonts.css");
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* css reset */
+html, body, button, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+    padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+ul {
+    list-style: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* 본문 스타일 */
+
+html {
+    font-size: 10px;
+}
+body {
+    font-family: "Noto Sans Regular", sans-serif;
+    font-size: 1.4rem;
+    color: #181818;
+}
+
+/* 링크 스타일 */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover, a:focus {
+    color: #f00;
+}
+/* 숨김 컨텐츠 */
+.readable-hidden, .a11y, legend {
+    background: #452142;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+}
+
+.a11y:focus {
+    top: 5px;
+    left: 50%;
+    z-index: 1;
+    width: auto;
+    height: auto;
+    margin: 0;
+    clip: auto;
+    background: #000;
+    color: blue;
+    padding: 5px 10px;
+    transform: translateX(-50%)
+}
+
+/* float - clear: both float 부모에게 적용 */
+.clearfix::after {
+    content: "";
+    background-color: olive;
+    display: block;
+    clear: both;
+}
+
+
+
+/* 레이아웃 설계 */
+.container {
+    background: url("./images/bg_flower.png") no-repeat 50% 0, 
+    linear-gradient(to bottom, #aaa 0%, #eee 50%, #fff 70%) repeat 0 0;
+
+}
+.header, .visual, .main-content, .slogan, .footer {
+    width: 940px;
+    margin: 0 auto;
+}
+.header {
+    background: #fff;
+    position: relative;
+    padding: 0 30px 30px;
+    border-radius: 0 0 15px 15px;
+}
+.logo {
+    position: absolute;
+    top: 48px;
+    left: 65px;
+}
+
+/* 멤버 링크 */
+.member {
+    text-transform: uppercase;
+    font-size: 0;
+    text-align: right;
+    position: relative;
+    transform: translateX(10px);
+}
+.member > li {
+    display: inline-block;
+    font-size: 1.4rem;
+    padding: 10px 0;
+}
+.member > li:nth-child(n+2)::before {
+    content: ":";
+}
+.member > li > a {
+    padding: 8px 10px;
+}
+.member > li > a:focus {
+    outline: 1px solid #00e;
+    outline-offset: -10px;
+}
+
+.navigation {
+    
+}
+
+.main-menu {
+    background: rgba(247,150,33,1) linear-gradient(to bottom, rgba(249,198,103,1) 0%,rgba(247,150,33,1) 49%,rgba(249,198,103,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    border-top: 2px solid #000;
+    border-radius: 0 0 5px 5px;
+    height: 47px;
+    padding-left: 225px;
+}
+.main-menu > li {
+    float: left;
+    position: relative;
+}
+.main-menu > li:focus {
+    outline: 0;
+}
+.main-menu > li > span {
+    display: block;
+    line-height: 45px;
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 0 20px;
+    font-size: 1.6rem;
+    font-family: "Noto Sans Bold";
+    color: #fff;
+    cursor: pointer;
+    text-shadow: 1px 0 0 #000, 0 1px 0 #000, -1px 0 0 #000, 0px -1px 0 #000;
+}
+.main-menu > li:hover > span::after, .main-menu > li:focus > span::after {
+    content: "";
+    display: block;
+    border-top: 2px solid #000;
+}
+.main-menu > li:hover > span, .main-menu > li:focus > span {
+    color: #ff0;
+}
+
+.sub-menu {
+    position: absolute;
+    top: 46px;
+    white-space: nowrap;
+    display: none;
+}
+
+.sub-menu > li, .sub-menu > li > a {
+    display: inline-block;
+}
+.sub-menu > li > a {
+    padding: 4px 10px 4px 0;
+}
+.sub-menu > li > a::before {
+    font-family: "fontello";
+    content: "\e804";
+}
+.sub-menu > li > a:hover::before {
+    content: "\e802"
+}
+
+.menu-act {
+    display: block;
+}
+
+
+.about-html {
+    left: 0;
+}
+.about-css {
+    left: 0;
+}
+.web-standards {
+    left: 0;
+}
+.web-accessibility {
+    right: 0;
+}
+.qna {
+    right: 0;
+}
+.archive {
+    right: 0;
+}
+
+/* visual */
+@keyframes text-ani {
+    from {
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0);
+        transform: translate(0, 0);
+    } to {
+        font-size: 24px;
+        color: rgba(0, 0, 0, 1);
+        transform: translate(400px, 70px);
+    }
+}
+
+@keyframes flower-ani {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+.visual {
+    position: relative;
+    height: 120px;
+}
+.visual::before, .visual::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: flower-ani 2s infinite alternate;
+}
+.visual::before {
+    background: url("./images/ani_flower_01.png") no-repeat 0 -15px,
+    url("./images/ani_flower_02.png") no-repeat 670px 0;
+}
+.visual::after {
+    background: url("./images/ani_flower_03.png") no-repeat 300px 0,
+    url("./images/ani_flower_04.png") no-repeat 800px 0;
+    animation-delay: 1s;
+}
+.visual-text {
+    animation-name: text-ani;
+    /* animation-duration: 4s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-play-state: running; */
+    animation: text-ani 2s forwards ease-in-out;
+    position: absolute;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.main-content {
+    padding: 30px 15px;
+    min-height: 400px;
+    background: #fff;
+    border-radius: 15px 15px 0 0;
+    /* 
+    height: 60vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    */
+}
+.group {
+    margin: 0 15px;
+    
+}
+.group1 {
+    width: 250px;
+    float: left;
+}
+.group2 {
+    width: 380px;
+    float: left;
+}
+.group3 {
+    width: 190px;
+    float: left;
+}
+/* 속성 선택자 ^ = 시작, $ = 끝 */
+[class$="more"]::before {
+    content: '\e803';
+    font-family: "fontello";
+    color: hsla(90, 90%, 30%, 1);
+    margin-right: 5px;
+}
+/* 로그인 */
+.login {
+    background: orange radial-gradient(circle at right top, orange, orangered);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 5px 5px 5px 0 hsla(1, 0%, 0%, 1)
+}
+.login-heading {
+    color: rgb(255, 209, 103);
+    font-family: "Noto Sans Bold";
+    font-size: 1.5rem;
+    text-indent: 10px;
+}
+.login-form {
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 5px 5px 0 0;
+    padding: 10px 10px 0 10px;
+}
+.login-form > fieldset {
+    border-bottom: 1px solid #000;
+    position: relative;
+}
+
+.user-email, .user-pw {
+    margin-bottom: 5px;
+    width: 90px;
+}
+.btn-login {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 53px;
+    height: 53px;
+    border-radius: 5px;
+    color: #fff;
+    background: #f00;
+    font-size: 1.2rem;
+}
+.login-form label {
+    width: 4em;
+    display: inline-block;
+}
+.login-form > input {
+    width: 95px;
+    height: 24px;
+    border: 1px solid #000;
+    padding-left: 5px;
+}
+.join {
+    background: #fff;
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.join > li::before {
+    content: '\e805';
+    font-family: "fontello";
+    color: orangered;
+}
+.join > li > a {
+    padding: 5px 0;
+}
+
+.validation {
+    margin-top: 20px;
+}
+.validation-list {
+
+}
+.validation-list > li > a {
+    display: block;
+    margin-bottom: 10px;
+    height: 33px;
+    line-height: 30px;
+    border: 1px solid #bab;
+    border-radius: 15px;
+    text-align: center;
+    background: url("./images/validation_icon.png") no-repeat 15px 50%, linear-gradient(to bottom, #ccc, #eee);
+}
+.validation-list > li > a {
+    
+}
+
+/* 웹 관련 용어 */
+.term {
+    margin-top: 20px;
+    background: linear-gradient(to bottom, #eee, #ccc);
+    border: 1px solid #bab;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+.term-heading {
+    font-family: "Noto Sans Bold";
+    font-size: 1.5rem;
+}
+.term-list {
+    margin-top: 10px;
+}
+.term-list-heading {
+    float: right;
+    width: 145px;
+    margin-top: -5px;
+}
+.term-list-thumbnail {
+    float: left;
+}
+.term-list-brief {
+    float: right;
+    line-height: 1.5;
+    width: 145px;
+    margin-top: 5px;
+}
+.search {
+    background: #eee linear-gradient(to bottom, #ccc, #eee);
+    border: 1px solid #aaa;
+    border-bottom: none;
+    padding: 15px 25px 10px;
+    border-radius: 15px 15px 0 0;
+}
+.search-form {
+    vertical-align: middle;
+}
+.search-form label, .search-form input, .btn-search {
+    vertical-align: middle;
+}
+.search-form label::before {
+    content: "\e801";
+    font-family: "fontello";
+    margin-right: 3px;
+}
+.search-form input[type="search"] {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 2px 2px 2px 5px;
+    width: calc(100% - 123px);
+}
+
+.btn-search {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 0 10px;
+    color: #fff;
+    background: #555 linear-gradient(to top, #666, #333);
+}
+
+/* 공지사항 및 자료실 */
+.board {
+    margin-top: 20px;
+    position: relative;
+}
+
+.notice-heading, .pds-heading {
+    background: #ccc linear-gradient(to bottom, #ccc, #eee);
+    padding: 5px 15px;
+    color: #666;
+    border: 1px solid #aaa;
+    border-radius: 5px 5px 0 0;
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+}
+.board-act .notice-heading, .board-act .pds-heading {
+    background: #fff;
+    color: #ed802d;
+    border-color: #ed802d;
+    border-bottom: #fff;
+}
+.pds-heading {
+    left: 83px;
+}
+.notice-list, .pds-list {
+    padding: 40px 0 0 20px;
+
+}
+.notice-list > li > a, .pds-list > li > a {
+    width: 275px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.notice-list > li > time, .pds-list > li > time {
+    float: right;
+}
+.notice-list > li, .pds-list > li {
+    margin-top: 5px;
+    list-style: square;
+}
+.notice-more, .pds-more {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+}
+
+.notice-list, .pds-list, .notice-more, .pds-more {
+    display: none;
+} 
+/* 아래 주석과 동일하다 */
+.board-act .notice-list, .board-act .pds-list, .board-act .notice-more, .board-act .pds-more {
+    display: block;
+}
+/* 위 코드와 동일하다.
+.board-act > ul, .board-act > a {
+    display: block;
+} 
+*/
+
+.news {
+    margin-top: 20px;
+    position: relative;
+}
+.news::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 80%;
+    height: 1px;
+    background: #aaa linear-gradient(to right, #aaa, #fff);
+}
+.news-heading {
+    font-family: "Noto Sans Bold, sans-serif";
+    font-size: 1.5rem;
+    color: #ed802d;
+}
+.news-heading + a {
+    display: block;
+}
+.news-heading + a:hover, .news-heading + a:focus {
+    color: inherit;
+}
+.news-item {
+    margin-top: 30px;
+    padding-left: 130px;
+    position: relative;
+    min-height: 115px;
+}
+.news-item > h3 {
+    font-weight: 700;
+}
+.news-item > time {
+    display: block;
+    text-align: right;
+    margin: 5px 0 5px;
+}
+.news-item > figure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+.news-item img {
+    margin-bottom: 15px;
+    box-shadow: 0 15px 15px 2px #aaa;
+}
+.news-more {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    padding: 8px;
+}
+
+/* css grid 적용
+.news-item {
+    margin-top: 30px;
+    display: grid;
+    grid-template-areas: 
+    "figure headline"
+    "figure time"
+    "figure p";
+    grid-template-columns: 130px 1fr;
+    grid-template-rows: 20px 20px 1fr;
+}
+.news-item h3 {
+    grid-area: headline;
+    grid-column: 2;
+}
+.news-item time {
+    grid-area: time;
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}
+.news-item p {
+    grid-area: p
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+}
+.news-item figure {
+    grid-area: figure;
+    grid-row: 1 / 4;
+    grid-column: 1 / 2;
+} 
+*/
+
+
+.group3 {
+
+}
+.event-related {
+    background: #eee linear-gradient(to bottom, #eee, #ccc);
+    padding: 10px;
+    border: 1px solid #bac;
+    border-radius: 5px;
+}
+.event {
+    position: relative;
+    border-bottom: 1px solid #aaa;
+}
+.event-heading {
+    font-family: "Noto Sans Bold", sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.event-heading > span {
+    color: #ed802d;
+}
+.event > div {
+
+}
+.event > div > p {
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+.event > div > p:nth-child(1) {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.event > div > p:nth-child(1) > img {
+    border: 1px solid #bac;
+    box-shadow: 5px 5px 0 0 #aaa;
+}
+.event > div > p:nth-child(2) {
+    margin-bottom: 10px;
+}
+
+.btn-event {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.btn-event > button {
+    float: left;
+    width: 19px;
+    height: 18px;
+    overflow: hidden;
+    background-image: url("./images/backpage_forwardpage.png");
+    background-repeat: no-repeat;
+    background-color: #fff;
+    padding-top: 18px;
+    cursor: pointer;
+}
+.btn-event > .btn-event-prev {
+
+}
+
+/* 상단에 .btn-event > button 이렇게 표기했던 구체성 점수가 높기 때문에 선언을 이렇게 하면 안되지만
+ bg속성을 단축 표기법으로 사용하지 않음으로 예방한다. */
+.btn-event-next { 
+    margin-left: 5px;
+    background-position: 100% 0;
+}
+
+
+.related {
+    margin-top: 10px;
+}
+.related-heading {
+    font-family: "Noto Sans Bold", sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.related-heading > span {
+    color: #ed802d;
+}
+.related-list {
+    border: 1px solid #bbaa11;
+    border-radius: 5px;
+    height: 25px;
+    background: #fff;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+.related-list:hover, .list-open {
+    padding: 12px 0;
+    height: 145px;
+    border: 1px solid #aaa;
+}
+.related-list > li {
+    padding: 0 5px;
+}
+.related-list > li > a {
+    display: block;
+    line-height: 23px;
+    padding-left: 2em;
+}
+
+.favorite {
+    margin-top: 20px;
+    border: 1px solid #8ac;
+    border-radius: 5px;
+    background: #eee linear-gradient(to bottom, #eee, #ccc);
+    padding: 10px 15px;
+    position: relative;
+}
+.favorite-heading {
+    font-family: "Noto Sans Bold", sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.favorite-heading > span {
+    color: #ed802d;
+}
+.favorite-list {
+    overflow: hidden;
+}
+.favorite-list li {
+    counter-increment: number;
+    margin-top: 5px;
+    position: relative;
+}
+.favorite-list li::before {
+    content: counter(number, decimal);
+    color: #fff;
+    background: #666;
+    border-radius: 3px;
+    padding: 0 5px;
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+.favorite em {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 9px;
+    height: 11px;
+    padding-top: 11px;
+    overflow: hidden;
+    background-image: url("./images/rank.png");
+    background-repeat:  no-repeat;
+    transform: translateY(-50%);
+}
+
+.stop {
+    background-position: 0 50%;
+}
+.down {
+    background-position: 0 100%;
+}
+.favorite-more {
+    position: absolute;
+    top: 3px;
+    right: 7px;
+    padding: 8px;
+}
+.favorite-more::before {
+    content: "\e803";
+    font-family: "fontello";
+    color: green;
+    margin-right: 5px;
+}
+ /* 슬로건 */
+.slogan {
+    padding: 15px 70px 15px 180px;
+    position: relative;
+}
+.slogan-heading {
+    position: absolute;
+    top: 10px;
+    left: 35px;
+    width: 110px;
+    height: 83px;
+    padding: 30px;
+}
+.slogan-heading::after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("images/coffee.png");
+    background-repeat: no-repeat;
+}
+.slogan-content {
+    color: #a09874;
+}
+.slogan-centent q {
+    font-weight: bold;
+    /* quotes: "<<" ">>"; */
+}
+.slogan-centent q::before {
+    font-size: 3rem;
+    position: relative;
+    top: 10px;
+}
+.slogan-centent q::after {
+    content: "";
+}
+.footer-bg {
+    background-color: purple;
+    background-image: linear-gradient(to bottom, #aaa 0%, #ccc 30%, #eee 60%, #fff 70%, #fff 100%);
+}
+.footer {
+    padding: 20px 70px 15px 180px;
+    position: relative;
+}
+.footer-logo {
+    position: absolute;
+    top: 35px;
+    left: 45px;
+}
+.guide {
+    background: #7b7b7b;
+    color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 2px 15px;
+    text-transform: uppercase;
+}
+.guide > li {
+    float: left;
+}
+.guide > li > a {
+    display: block;
+    padding: 10px 20px;
+}
+address {
+    padding: 10px 0;
+}
+address > span:nth-of-type(2) {
+    padding: 0 10px;
+}
+.tech-logo {
+    position: absolute;
+    right: -35px;
+    top: 15px;
+}

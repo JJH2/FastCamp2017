@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sprite 이미지</title>
+    <style>
+        div {
+            background: yellowgreen;
+            overflow: hidden;
+            
+        }
+        div span {
+            width: 20px;
+            height: 19px;
+            float: left;
+            background: url("css/images/backpage_forwardpage.png") no-repeat;
+            box-sizing: border-box;
+            padding-top: 19px;
+            overflow: hidden;
+        }
+
+        div span:nth-of-type(2) {
+            background-position: right;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>sprite bgImg</h1>
+    <div>
+        <span>이전</span>
+        <span>다음</span>
+    </div>
+    <script>
+        document.getElementsByTagName("span")
+
+    </script>
+</body>
+</html>

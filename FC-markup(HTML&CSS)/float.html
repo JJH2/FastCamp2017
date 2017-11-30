@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>float 활용</title>
+    <style>
+        div.box1 {
+            background: gold;
+        }
+        .box1::after {
+            content: "";
+            display: block;
+            box-sizing: border-box;
+            clear: both;
+        }
+        div.box1 > img {
+            float: left;
+        }
+        .box2 {
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <img src="./images/small.jpg" alt="" width="200px;" height="150px">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Officia corrupti at culpa esse similique inventore, 
+        repellendus sed vero deserunt veniam dolore expedita maxime nostrum 
+        recusandae est eius. Voluptatum, dolore nihil!
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia corrupti at culpa esse similique inventore, repellendus
+        sed vero deserunt veniam dolore expedita maxime nostrum recusandae est eius. Voluptatum, dolore nihil!
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia corrupti at culpa esse similique inventore, repellendus
+        sed vero deserunt veniam dolore expedita maxime nostrum recusandae est eius. Voluptatum, dolore nihil!
+    </div>    
+    <div class="box2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Officia corrupti at culpa esse similique inventore, 
+        repellendus sed vero deserunt veniam dolore expedita maxime nostrum 
+        recusandae est eius. Voluptatum, dolore nihil!
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia corrupti at culpa esse similique inventore, repellendus
+        sed vero deserunt veniam dolore expedita maxime nostrum recusandae est eius. Voluptatum, dolore nihil!
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia corrupti at culpa esse similique inventore, repellendus
+        sed vero deserunt veniam dolore expedita maxime nostrum recusandae est eius. Voluptatum, dolore nihil!
+    </div>    
+</body>
+</html>

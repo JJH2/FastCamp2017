@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Picture 요소</title>
+    <style>
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background: pink;
+        }
+        .container picture, .container img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <script src="./js/picture.js"></script>
+</head>
+<body>
+    <h1>picture 요소의 활용</h1>
+    <div class="container">
+        <picture id="s">
+            <source srcset="./images/large.jpg" media="(min-width: 1025px)">
+            <source srcset="./images/medium.jpg" media="(min-width: 481px)">
+            <source srcset="./images/small.jpg" media="(min-width: 1px) and (max-width: 480px)">
+            <img src="./images/normal.jpg" alt="">
+        </picture>
+    </div>
+    <script>
+        document.createElement("picture");
+        console.log(document.getElementById('s'));
+    </script>
+</body>
+</html>

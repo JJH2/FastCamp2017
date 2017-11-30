@@ -1,0 +1,236 @@
+@charset "UTF-8";
+@import url("./normalize.css");
+@import url("./fonts.css");
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* css reset */
+html, body, button, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+    padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+ul {
+    list-style: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* 본문 스타일 */
+
+html {
+    font-size: 10px;
+}
+body {
+    font-family: "Noto Sans Regular", sans-serif;
+    font-size: 1.4rem;
+    color: #181818;
+}
+
+/* 링크 스타일 */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover, a:focus {
+    color: #f00;
+}
+/* 숨김 컨텐츠 */
+.readable-hidden, .a11y, legend {
+    background: #452142;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+}
+
+.a11y:focus {
+    top: 5px;
+    left: 50%;
+    z-index: 1;
+    width: auto;
+    height: auto;
+    margin: 0;
+    clip: auto;
+    background: #000;
+    color: blue;
+    padding: 5px 10px;
+    transform: translateX(-50%)
+}
+
+/* float - clear: both float 부모에게 적용 */
+.clearfix::after {
+    content: "";
+    background-color: olive;
+    display: block;
+    clear: both;
+}
+
+
+.responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+/* mobile */
+@media all and (max-width: 999px) {
+    .header, .navigation, .main-content, .slogan, .footer {
+        width: 100%;
+        padding: 1em;
+    }
+    .header {
+        background: #38302e;
+        display: flex;
+        flex-direction: column;
+
+    }
+    .member {
+        order: -1;
+        background: #988574;
+        margin: -1em -1em 0 -1em;
+        text-align: right;
+    }
+    .member li, .member a {
+        display: inline-block;
+        padding: 0.5em;
+        color: #fff;
+    }
+    .logo {
+        padding: 0.5em 0;
+    }
+    .search input {
+        width: calc(100% - 40px);
+        height: 30px;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        padding: 2px 2px 2px 10px;
+    }
+    .btn-search {
+        width: 30px;
+        height: 30px;
+        background: url("./images/btn_search.png") no-repeat 0 0 / 30px 30px;
+        padding-top: 30px;
+        overflow: hidden;
+        float: right;
+    }
+    .menubar-container {
+        background: pink;
+        position: absolute;
+        top: 5.5em;
+        right: 1em;
+        width: 30px;
+        height: 30px;
+        overflow: hidden;
+    }
+    .btn-menubar {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        color: transparent;
+    }
+    .menubar {
+        background: #fff;
+        height: 6px;
+        width: 100%;
+        border-radius: 4px;
+        position: absolute;
+        right: 0;
+        transition: all 0.2s;
+    }
+    .menubar-top {
+        top: 0;
+    }
+    .menubar-middle {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .menubar-bottom {
+        top: 100%;
+        transform: translateY(-100%);
+    }
+    .menubar-act .menubar-top {
+        transform: rotate(45deg);
+        margin-top: 12px;
+    }
+    .menubar-act .menubar-middle {
+        transform: translate(-100%, -50%);
+    }
+    .menubar-act .menubar-bottom {
+        transform: rotate(-45deg);
+        margin-top: -18px;
+    }
+    .main-menu {
+        background: rgba(0, 0, 0, 0.85);
+        width: 50%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        color: #fff;
+        padding: 20px;
+        transform: translateX(-100%);
+        transition: all 0.2s;
+    }
+    .menu-act {
+        transform: translateX(0);
+        z-index: 1;
+    }
+    .sub-menu {
+        margin-left: 20px;
+    }
+
+    /* 메인 컨텐츠 제목 공통 */
+    .main-content-heading {
+        font-family: "Noto Sans Bold", sans-serif;
+        font-size: 2rem;
+        background-color: pink;
+        background-image: url("images/sprite_main.png");
+        background-repeat: no-repeat;
+        padding-left: 65px;
+    }
+    .main-content-heading span {
+        display: block;
+    }
+    .news-heading {
+        background-position-y: -230px;
+    }
+    .board-heading {
+        background-position-y: -115px;
+    }
+    .favorite-site-heading {
+        background-position-y: -345px;
+    }
+    .twitter-heading {
+        background-position-y: -460px;
+    }
+}
+
+/* desktop */
+@media all and (max-width: 999px) {
+    
+}
