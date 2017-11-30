@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+/* 상대 배치 */
+h2{
+    background: yellow;
+    position: relative;
+    top: 50px;
+    left: 100px;
+}
+/* 절대 배치 */
+div{
+    position: relative;
+    height: 100px;
+    background: lime;
+}
+h3{
+    background: pink;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 50px;
+}
+span{
+    background: orange;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}

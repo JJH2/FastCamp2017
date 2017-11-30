@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Picture 요소</title>
+</head>
+<body>
+    <h1>picture element</h1>
+    <picture>
+        <source srcset="../images/small.jpg" media="(max-width: 600px)">
+        <source srcset="../images/medium.jpg" media="(min-width: 601px) and (max-width: 800px)">
+        <source srcset="../images/large.jpg" media="(min-width: 801px)">
+        <img src="../images/normal.jpg" alt="뷰포트 크기에 따른 이미지">
+    </picture>
+</body>
+</html>

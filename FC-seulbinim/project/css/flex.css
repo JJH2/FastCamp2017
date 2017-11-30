@@ -1,0 +1,79 @@
+@charset "utf-8";
+html, body{
+    margin: 0;
+}
+.wrapper{
+    background: gray;
+    height: 100vh;
+    padding: 0 100px;
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    background: yellow;
+    height: 50px;
+    flex: 0 0 auto;
+}
+.navigation{
+    background: skyblue;
+    height: 100px;
+    flex: 0 0 auto;
+    display: flex;
+}
+.main-menu{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background: pink;
+    display: flex;
+    flex: 1 0 auto;
+}
+.main-menu li{
+    flex: 1 0 auto;
+}
+.main-menu li:nth-child(odd){
+    background: lime;
+}
+.main-menu li:nth-child(even){
+    background: orange;
+}
+.container{
+    background: tomato;
+    flex: 1 0 auto;
+    display: flex;
+}
+.content{
+    background: blue;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.books{
+    background: yellow;
+    flex: 1 0 auto;
+}
+.board{
+    background: aqua;
+    flex: 2 0 auto;
+    display: flex;
+}
+.notice{
+    background: pink;
+    flex: 1 0 auto;
+}
+.pds{
+    background: orange;
+    flex: 1 0 auto;
+    order: 1;
+}
+.ad{
+    background: green;
+    flex: 0 0 250px;
+}
+
+
+.footer{
+    background: yellowgreen;
+    height: 50px;
+    flex: 0 0 auto;
+}

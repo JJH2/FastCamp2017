@@ -1,0 +1,81 @@
+@charset "utf-8";
+/* 스타일 초기화 */
+html,body{
+  margin: 0;  
+}
+/* 리스트 불릿기호와 여백 제거 */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+/* 플렉스 박스 레이아웃 */
+.wrapper{
+    background: gray;
+    padding: 0 100px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.header{
+    background: silver;
+    height: 100px;
+}
+.navigation{
+    background: lime;
+    height: 100px;
+    display: flex;
+   
+}
+.main-menu{
+    display: flex;
+    flex: 1 0 auto;
+    background: yellow;
+    
+}
+.main-menu li:nth-child(odd){
+    background: skyblue;
+}
+.main-menu li:nth-child(even){
+    background: orange;  
+}
+.main-menu li{
+    flex: 1 0 auto;
+}
+.container{
+    background: red;
+    display: flex;
+    flex: 1 0 auto;
+}
+.content{
+    background: aqua;
+    flex-direction: column;
+    display: flex;
+    flex: 1 0 auto;
+}
+.books{
+    height: 150px;
+    background: pink;
+}
+.board{
+    background: blue;
+    display: flex;
+    flex: 1 0 auto;
+}
+.notice{
+    background: olive;
+    flex: 1 0 auto;
+
+}
+.pds{
+    background: tomato;
+    flex: 1 0 auto;
+}
+.ad{
+    background: yellow;
+    width: 250px;
+}
+.footer{
+    height: 100px;
+    background: silver;
+}

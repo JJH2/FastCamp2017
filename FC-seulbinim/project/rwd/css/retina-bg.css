@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+body{
+    margin: 100px;
+}
+.rwd-bg{
+    background: yellow url(../images/webcafe-logo.png) no-repeat;
+    background-size: contain;
+    width: 300px;
+    height: 200px;
+}
+@media screen and (-webkit-min-device-pixel-ration: 2),
+(min-resolution: 192dpi){
+    .rwd-bg{
+        background-image: url(../images/webcafe-logo@2x.png);
+    }
+}

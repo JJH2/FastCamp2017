@@ -1,0 +1,218 @@
+@charset "utf-8";
+
+html {
+    font-size: 14px;
+}
+.a11y {
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+.block--none {
+    display: none;
+}
+
+@media screen and (max-width: 999px){
+
+    .header {
+        background: skyblue;
+        position: relative;
+        padding-bottom: 10px;
+        padding-bottom: 100px;
+    }
+    .header__wrap {
+        width: 100%;
+
+    }
+    .logo {
+        background: #369;
+        width: 100%;
+        padding: 10px 20px;
+        position: absolute;
+        top: 37px;
+    }
+    .logo > a {
+        float: left;
+        
+    }
+    .mainNav--open {
+        cursor: pointer;
+        float: right;
+        width: 40px;
+        background: rgba(0, 0, 0, 0);
+        border: none;
+    }
+    .mainNav--open > span {
+        background: #fff;
+        width: 40px;
+        height: 10px;
+        float: left;
+        display: block;
+    }
+
+    .mainNav--open > span:nth-child(2) {
+        margin: 5px 0;
+    }
+
+
+    .header__topNav {
+        position: relative;
+        background: #988574;
+        width: 100%;
+        text-align: right;
+    }
+
+    .header__topNav > li {
+        display: inline-block;
+    }
+    .header__topNav > li > a {
+        display: inline-block;
+        padding: 10px;
+        color: #fff;
+    }
+
+
+    .searchForm {
+        background: #988574;
+        position: relative;
+        top: 74px;
+        width: 100%;
+        padding: 20px 20px;
+        display: block;
+    }
+
+    .search__bar {
+
+        border-radius: 3px;
+
+    }
+    .search__submitBtn {
+
+    }
+
+
+    .header__mainNav {
+        background: red;
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        width: 70%;
+        height: 100%;
+        color: #fff;
+    }
+    .header__mainNav > ul {
+        padding: 20px 20px 0 20px;
+        width: 100%;
+        margin: 0;
+        text-align: left;
+    }
+    .header__mainNav > ul > span {
+
+    }
+    .header__mainNav > ul > li:first-child {
+        padding-top: 20px;
+    }
+
+
+
+    .main {
+        padding: 10px 20px;
+    }
+    .main > div > div {
+        margin: 0 auto;
+        padding: 10px 0;
+    }
+    .main > div > div::after {
+        content: "";
+        display: block;
+        border-top: 1px solid #000;
+    }
+
+    .main__book {
+        
+    }
+
+    .main__book__content {
+        text-align: center;
+    }
+}
+
+
+
+.wrap {
+    margin: 0 auto;
+}
+.header {
+    background: #abdffa;
+}
+.header__wrap {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    height: 105px;
+}
+.logo {
+    position: absolute;
+    padding: 10px 20px;
+    top: 37px;
+}
+.header__topNav {
+    position: absolute;
+    text-align: right;
+    width: 100%;
+    margin: auto;
+    height: 37px;
+}
+
+.header__topNav > li {
+    display: inline-block;
+
+}
+.header__topNav > li > a {
+    display: inline-block;
+    padding: 10px;
+}
+.searchForm {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 50px;
+}
+
+
+
+.header__mainNav {
+    background: #988574;
+    padding: 20px 0;
+    color: #fff;
+    text-align: center;
+    border-top: 1px solid #000;
+    border-bottom: 2px solid #000;
+    font-size: 1.2rem;
+}
+
+.header__mainNav > ul {
+    margin: 0 auto;
+    display: inline-block;
+    margin: 0 30px;
+}
+.header__mainNav > ul > span {
+    font-size: 1.4rem;
+    display:inline-block;
+    margin-bottom: 10px;
+}
+.header__mainNav > ul > li {
+
+}
+.header__mainNav > ul > li > a {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0;
+}
+.header__mainNav > ul > li > a:hover {
+    color: red;
+}
+
+

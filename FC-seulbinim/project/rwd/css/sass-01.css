@@ -1,0 +1,29 @@
+[class^="box"] {
+  font: 16px / 1.5 "Noto Sans KR";
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  float: left;
+  border: 1px solid #000;
+  background: #f00;
+}
+
+.wrapper {
+  clear: both;
+}
+
+.wrapper ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.wrapper li {
+  background: yellow;
+}
+
+.container {
+  color: #f00;
+}
+
+/*# sourceMappingURL=sass-01.css.map */

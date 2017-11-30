@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ARIA를 활용한 TabUI</title>
+</head>
+<body>
+    <div class="tab-interface">
+        <!-- 탭 인덱스 -->
+        <ul class="tab-list" role="tablist">
+            <li 
+            role="tab" 
+            id="tab1" 
+            aria-selected="true" 
+            tabindex="0"
+            aria-controls="section1">
+            공지사항</li>
+            <li 
+            role="tab" 
+            id="tab2" 
+            aria-selected="false" 
+            tabindex="0"
+            aria-controls="section2">
+            자료실</li>
+        </ul>
+        <!-- 탭 콘텐츠 -->
+        <section id="section1" role="tabpanel" aria-labelledby="tab1" >
+            <p>공지사항 영역입니다. </p>
+        </section>
+        <section id="section2" role="tabpanel" aria-labelledby="tab2" >
+            <p>자료실 영역입니다. </p>
+        </section>
+
+    </div>
+</body>
+</html>

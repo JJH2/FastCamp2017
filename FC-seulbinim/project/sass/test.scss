@@ -1,0 +1,21 @@
+$base-color: #333;
+@mixin transform{
+    -webkit-transform: translate();
+    -moz-transform: translate();
+    -ms-transform: translate();
+    -o-transform: translate();
+    transform: translate();
+}
+html{
+    font-size: 10px;
+}
+body{
+    font-size: 1.4rem;
+    color: $base-color;
+}
+a{
+    color: $base-color;
+}
+div{
+    @include transform;
+}

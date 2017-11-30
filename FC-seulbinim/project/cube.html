@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3D Transform - Cube</title>
+    <link rel="stylesheet" href="css/cube.css">
+</head>
+<body>
+    <div class="btn-cube">
+        <button type="button" class="btn-front">1번 큐브 보기</button>
+        <button type="button" class="btn-back">2번 큐브 보기</button>
+        <button type="button" class="btn-left">3번 큐브 보기</button>
+        <button type="button" class="btn-right">4번 큐브 보기</button>
+        <button type="button" class="btn-top">5번 큐브 보기</button>
+        <button type="button" class="btn-bottom">6번 큐브 보기</button>
+        <button type="button" class="btn-backface">뒷면 보기/감추기</button>
+    </div>
+    <div class="container">
+        <div class="cube">
+            <div class="front">1</div>
+            <div class="back">2</div>
+            <div class="left">3</div>
+            <div class="right">4</div>
+            <div class="top">5</div>
+            <div class="bottom">6</div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $(".btn-front").on("click", function(){
+                $(".cube").removeAttr("class").addClass("cube show-front");
+            });
+            $(".btn-back").on("click", function(){
+                $(".cube").removeAttr("class").addClass("cube show-back");
+            });
+            $(".btn-left").on("click", function(){
+                $(".cube").removeAttr("class").addClass("cube show-left");
+            });
+            $(".btn-right").on("click", function(){
+                $(".cube").removeAttr("class").addClass("cube show-right");
+            });
+            $(".btn-top").on("click", function(){
+                $(".cube").removeAttr("class").addClass("cube show-top");
+            });
+            $(".btn-bottom").on("click", function(){
+                $(".cube").removeAttr("class").addClass("cube show-bottom");
+            });
+            $(".btn-backface").on("click", function(){
+                $(".container").toggleClass("backface");
+            });
+        });
+
+
+    </script>
+    
+</body>
+</html>

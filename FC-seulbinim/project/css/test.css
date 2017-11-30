@@ -1,0 +1,20 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.4rem;
+  color: #333;
+}
+
+a {
+  color: #333;
+}
+
+div {
+  -webkit-transform: translate();
+  -moz-transform: translate();
+  -ms-transform: translate();
+  -o-transform: translate();
+  transform: translate();
+}
