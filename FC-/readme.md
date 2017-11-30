@@ -39,10 +39,30 @@ ssh에 접속하고
 sudo apt-get update 기본적인 툴을 설치하는 듯
 https://www.google.co.kr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwihzOnP4uDXAhWBrJQKHfa7DhAQFgglMAA&url=https%3A%2F%2Fblog.outsider.ne.kr%2F346&usg=AOvVaw0_O2chzyWaQn4kqktzJ6_E
 
-express-generator
+Express-Generator
 ===
 node 서버를 쉽게 만들어 준다?
 
-pm2
+Pm2
 ===
 npm module pm2 이것은 terminal을 종료해도 서버를 계속 켜준다.
+
+Connection Pooling
+===
+Connection 비용이 크기때문에 돌려 받는다.
+ex) 커피 - 100개의 잔을 미리 준비하여 100개 이후엔 받지 않고 여유가 생길 때 처리한다. 
+//connectionLimit: 100
+pool을 사용하고 release();를 사용하여 반납한다.
+
+동기 / 비동기
+===
+***동기***
+console.log("Hello");
+console.log("World");
+> Hello World
+---
+***비동기***
+setTimeout(() => console.log("World2"), 1000); //(1초 뒤에 출력)
+console.log("Hello");
+> Hello World2
+---
