@@ -32,6 +32,19 @@ mySQL 상위 버전이다.
 SequelPro
 ===
 MariaDB / mySQL을 GUI로 실행한다.
+---
+```sql
+create table member(
+	id varchar(20) not null,
+	name varchar(10) not null,
+	emaill varchar(100) not null,
+	tel varchar(13) not null,
+	primary key(id)
+);
+```
+---
+query에 member table을 생성하고 컨텐츠를 넣는다.
+마지막에 primary 키를 설정해줌.
 
 ubuntu
 ===
@@ -66,3 +79,27 @@ setTimeout(() => console.log("World2"), 1000); //(1초 뒤에 출력)
 console.log("Hello");
 > Hello World2
 ---
+
+sql
+===
+brew mariaDB, node / sequel / npm express-generation, mysql / 
+---
+
+REST 방식
+===
+Get에 URL요청 = SELECT
+Post URL요청 = INSERT , UPDATE, DELETE
+Put URL요청 = UPDATE
+Delete URL요청 = DELETE
+---
+
+get /users : select * from users
+get /users/id : select * from users id=?
+post / users : insert
+post / users/id : update
+post / users/id/del : delete
+
+
+GitHub Fork
+===
+fork는 원하는 깃허브에 접속하여 포크를 누르면 그 깃허브 
