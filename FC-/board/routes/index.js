@@ -46,7 +46,6 @@ router.post('/write', (req, res, next) => {
       if (err) {
         return next(err);
       };
-
       console.log("저장 완료");
       conn.release();
       //connection을 돌려준다.
@@ -54,7 +53,6 @@ router.post('/write', (req, res, next) => {
       //서버에서 답변을 꼭 해줘야 오류가 안 난다. res.send();
     });
   });
-
 });
 
 
@@ -97,27 +95,51 @@ router.get('/read/:num', (req, res, next) => {
   console.log("num=", num);
   pool.getConnection((err, conn) => {
     if (err) { return next(err) };
-    let sql = `SELECT 
+    let update_sql = "UPDATE board SET hit = hit + 1 WHERE num=?";
+    let arr = [num];
+    conn.query(update_sql, arr, (err, result) => {
+      if (err) { return next(err) };
+      console.log('result=', result);
+      let sql = `SELECT 
                   num, 
                   subject, 
-                  writer, 
+                  content, 
                   DATE_FORMAT(regdate, '%Y-%c-%d %T') as regdate, 
                   hit 
                   FROM board
-                  WHERE num`;
-    let arr = [num];
+                  WHERE num=?`;
 
+      conn.query(sql, arr, (err, rows) => {
+        if (err) { return next(err) };
+        console.log(`rows=`, rows);
+        conn.release();
+        let obj = {
+          title: "게시판 글 읽기",
+          rows: rows[0]
+        };
+        res.render('read', obj);
+      });
+    });
+  });
+});
+
+router.get('/updateform/:num', (req, res, next) => {
+  let num = req.params.num;
+  pool.getConnection((err, conn) => {
+    if (err) { return next(err) };
+    let sql = "SELECT * FROM board WHERE num=?";
+    let arr = [num];
     conn.query(sql, arr, (err, rows) => {
       if (err) { return next(err) };
-      console.log(`rows=`, rows);
+      console.log('rows=', rows);
       conn.release();
       let obj = {
-        title: "게시판 글 읽기",
-        row: rows[0]
+        title: "게시판 수정",
+        rows: rows[0]
       };
-      res.render('read', obj);
-    })
-  })
+      res.render('updateform', obj);
+    });
+  });
 });
 
 module.exports = router;

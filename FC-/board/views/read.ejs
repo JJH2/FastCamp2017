@@ -11,31 +11,36 @@
     <p><a href="/list">리스트</a></p>
     <table width="600" border="1">
         <tr>
-            <th>글번호</th>
-            <td><%= row.num %></td>
-        </tr>
-        <tr>
-            <th>제목</th>
-            <td><%= row.subject %></td>
-        </tr>
-        <tr>
-            <th>내용</th>
-            <td></td>
+            <th width="200">글번호</th>
+            <td><%= rows.num %></td>
         </tr>
         <tr>
             <th>날짜</th>
-            <td></td>
+            <td><%= rows.regdate %></td>
         </tr>
         <tr>
             <th>조회수</th>
-            <td><%= row.hit %></td>
+            <td><%= rows.hit %></td>
+        </tr>
+        <tr>
+            <th>제목</th>
+            <td><%= rows.subject %></td>
+        </tr>
+        <tr>
+            <th>내용</th>
+            <td><%= rows.content %></td>
         </tr>
         <tr>
             <td colspan="2">
-                <input type="button" value="수정">
-                <input type="button" value="삭제">
+                <input type="button" value="수정" onclick="go_update()">
+                <input type="button" value="삭제" onclick="go_delete()">
             </td>
         </tr>
     </table>
+    <script>
+        function go_update() {
+            location.href = "/updateform/<%=rows.num%>";
+        }
+    </script>
 </body>
 </html>
