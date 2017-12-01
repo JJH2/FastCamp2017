@@ -49,7 +49,7 @@ router.post('/write', (req, res, next) => {
       console.log("저장 완료");
       conn.release();
       //connection을 돌려준다.
-      res.send('list');
+      res.redirect('/list');
       //서버에서 답변을 꼭 해줘야 오류가 안 난다. res.send();
     });
   });
@@ -142,6 +142,31 @@ router.get('/updateform/:num', (req, res, next) => {
   });
 });
 
+router.post('/update', (req, res ,next) => {
+  console.log(req.body);
+  const num = req.body.num; 
+  // ../views/./writeForm.ejs <input type="hidden" name="num"> 에서 받은 글번호 받기
+  const writer = req.body.writer;
+  const pwd = req.body.pwd;
+  const subject = req.body.subject;
+  const content = req.body.content;
+  pool.getConnection((err, conn) => {
+    if (err) { return next(err) };
+    const sql = "UPDATE board SET writer=?, subject=?, content=? WHERE num=? AND pwd=?";
+    const arr = [writer, subject, content, num, pwd];
+
+    conn.query(sql, arr, (err, result) => {
+      if (err) { return next(err) };
+      console.log("results:", result);
+      conn.release();
+      if (result.affectedRows == 1 ) {
+        res.redirect('/list');
+      } else {
+        res.send("<script>alert('비밀번호가 틀려서 되돌아갑니다');window.history.go(-3);</script>");
+      }
+    });
+  });
+});
 module.exports = router;
 
 

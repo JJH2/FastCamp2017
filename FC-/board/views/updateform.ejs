@@ -17,6 +17,8 @@
             <tr>
                 <th>글쓴이</th>
                 <td>
+                    <input type="hidden" name="num" value="<%=rows.num%>">
+                    <!-- 글 번호를 hidden으로 받아서 post로 넘김 -->
                     <input type="text" name="writer" value="<%= rows.writer %>">
                 </td>
             </tr>
