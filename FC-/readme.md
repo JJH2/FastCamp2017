@@ -45,9 +45,10 @@ create table member(
 query에 member table을 생성하고 컨텐츠를 넣는다.
 마지막에 primary 키를 설정해줌.
 
-ubuntu
+ubuntu AWS
 ===
-ssh에 접속하고 
+pem 폴더에 들어가서
+ssh에 접속 (aws > instances > connect)
 sudo apt-get update 기본적인 툴을 설치하는 듯
 https://www.google.co.kr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwihzOnP4uDXAhWBrJQKHfa7DhAQFgglMAA&url=https%3A%2F%2Fblog.outsider.ne.kr%2F346&usg=AOvVaw0_O2chzyWaQn4kqktzJ6_E
 
