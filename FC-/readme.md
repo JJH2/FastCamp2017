@@ -42,7 +42,6 @@ create table member(
 	primary key(id)
 );
 ```
----
 query에 member table을 생성하고 컨텐츠를 넣는다.
 마지막에 primary 키를 설정해줌.
 
@@ -102,4 +101,22 @@ post / users/id/del : delete
 
 GitHub Fork
 ===
-fork는 원하는 깃허브에 접속하여 포크를 누르면 그 깃허브 asdfasdf
+fork는 원하는 깃허브에 접속하여 포크를 누르면 그 깃허브의 repository가 내 깃허브에 연결이 된다.
+
+
+Nodejs 빠르게 빌드하기
+===
+1. npm i express-generator
+2. express --ejs
+3. app.js*
+4. npm i nodemon -> nodemon app.js
+5. npm i mysql
+
+```js
+//app.js*파일에 추가 코딩
+//마지막줄 전에
+app.listen("3000");
+console.log("Server Started!!!");
+```
+
+노드 서버를 간단하게 만들 수 있다.
