@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./css/style2.css"> -->
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        [class*="col-"]{
+            height: 300px;
+        }
+        .box1{
+            background-color: yellow;
+        }
+        .box2{
+            background-color: blue;
+        }
+        .box3{
+            background-color: pink
+        }
+        .box4{
+            background-color: gray
+        }
+    </style>
+</head>
+<body>
+    <div class="container show-grid">
+        <div class="row">
+            <div class="col-2 box1"></div>
+            <div class="col-2 box2"></div>
+            <div class="col-2 box3"></div>
+            <div class="col-2 box4"></div>
+        </div>
+        <div class="row" style="margin-top:50px">
+            <div class="col-2 push-1 box1"></div>
+            <div class="col-2 box2"></div>
+            <div class="col-2 box3"></div>
+            <div class="col-2 pull-1 box4"></div>
+        </div>
+        <div class="row" style="margin-top:50px">
+            <div class="col-2 prefix-1 box1"></div>
+            <div class="col-2 box2"></div>
+        </div>
+        <div class="row">
+            <div class="col-2 box3"></div>
+            <div class="col-2 suffix-1 box4"></div>
+        </div>
+    </div>
+</body>
+</html>
