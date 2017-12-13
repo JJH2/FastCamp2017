@@ -52,6 +52,8 @@ ssh에 접속 (aws > instances > connect)
 sudo apt-get update 기본적인 툴을 설치하는 듯
 https://www.google.co.kr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwihzOnP4uDXAhWBrJQKHfa7DhAQFgglMAA&url=https%3A%2F%2Fblog.outsider.ne.kr%2F346&usg=AOvVaw0_O2chzyWaQn4kqktzJ6_E
 
+
+
 Express-Generator
 ===
 node 서버를 쉽게 만들어 준다?
@@ -112,6 +114,8 @@ Nodejs 빠르게 빌드하기
 3. app.js*
 4. npm i nodemon -> nodemon app.js
 5. npm i mysql
+6. mysql.server start
+7. sequel pro 로 접속하기.
 
 ```js
 //app.js*파일에 추가 코딩
@@ -121,3 +125,6 @@ console.log("Server Started!!!");
 ```
 
 노드 서버를 간단하게 만들 수 있다.
+
+터널링 알아보기
+===
