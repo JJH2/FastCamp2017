@@ -27,8 +27,5 @@ Debuuger (editor extensions)
 5. .vscode/launch.json 속 localhost를 맞춰준다.
 6. editor 왼쪽에 있는 bug에서 play한다.
 
-Array
-===
-```js
 
-```
+
