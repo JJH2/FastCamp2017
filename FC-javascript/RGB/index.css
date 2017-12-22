@@ -64,6 +64,10 @@ body {
   border-radius: 50%;
   margin-right: 30px;
   cursor: pointer;
+  transition: transform 0.65s ease;
+}
+.box.show {
+  transform: scale(46);
 }
 .box:last-child {
   margin-right: 0;
