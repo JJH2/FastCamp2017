@@ -1,0 +1,15 @@
+.todo-list > div {
+    padding: 10px;
+    font-size: 2em;
+    background-color: steelblue;
+    color: #fff;
+}
+.todo-list > div > a {
+    float: right;
+    z-index: 2;
+}
+.todo-list > .complete {
+    background: #d6d6d6;
+    color: steelblue;
+    text-decoration: line-through;
+}
