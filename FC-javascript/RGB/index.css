@@ -48,6 +48,13 @@ body {
   align-items: center;
   justify-content: center;
 }
+.game-center-inner {
+
+}
+.rgb-text {
+  font-size: 150%;
+  margin-bottom: 50px;
+}
 .boxes {
   display: flex;
 }
@@ -62,7 +69,30 @@ body {
   margin-right: 0;
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.modal.show {
+  display: flex;
+}
+
+.modal-button {
+  border: 1px solid whitesmoke;
+  cursor: pointer;
+  padding: 10px;
+}
+.modal-button:hover {
+  border-color: wheat;
+  color: wheat;
+}
 /* transition,
  transform: translateY,
  transition-timing-function,
