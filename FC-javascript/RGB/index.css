@@ -38,8 +38,8 @@ body {
   display: flex;
   flex-direction: column;
 }
-.scroe {
-
+.score {
+  margin-top: 10px;
 }
 .game-center {
   flex-grow: 1;

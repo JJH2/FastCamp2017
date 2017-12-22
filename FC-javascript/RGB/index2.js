@@ -35,37 +35,35 @@ function init() {
   correctAnswer = random3();
 }
 
-let aa;
 
 document.querySelectorAll('.box').forEach((el, index) => {
   el.addEventListener('click', e => {
+    el.classList.add('show');
     if (index === correctAnswer) {
       document.querySelector('.correct').classList.add('show');
-      el.classList.add('show');
-      aa = el;
-      nextStage();
-      // draw();
-
     } else {
       document.querySelector('.wrong').classList.add('show');
-      document.querySelector('.modal-score').textContent = `score: ${stage}`;
-      el.classList.add('show');
-      aa = el;
-      init();
-      // draw();
     }
-
-
   });
 });
-document.querySelectorAll('.modal-button').forEach((el, index) => {
-  el.addEventListener('click', e => {
+
+document.querySelector('.correct .modal-button').addEventListener('click', e => {
+  nextStage();
+  draw();
+  document.querySelector('.correct').classList.remove('show');
+  document.querySelectorAll('.box').forEach(el => {
     el.classList.remove('show');
-    aa.classList.remove('show');
-    el.parentElement.parentElement.classList.remove('show');
-    draw();
-  })
-})
+  });
+});
+
+document.querySelector('.wrong .modal-button').addEventListener('click', e => {
+  init();
+  draw();
+  document.querySelector('.wrong').classList.remove('show');
+  document.querySelectorAll('.box').forEach(el => {
+    el.classList.remove('show');
+  });
+});
 
 
 init();
