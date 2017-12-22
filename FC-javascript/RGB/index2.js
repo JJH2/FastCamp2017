@@ -26,7 +26,7 @@ function draw() {
     el.style.backgroundColor = problem[index];
   });
   document.querySelector('.rgb-text').textContent = problem[correctAnswer];
-  document.querySelector('.result').textContent = stage;
+  document.querySelector('.score').textContent = stage;
 }
 
 function init() {

@@ -1,19 +1,57 @@
-body {
-  background-color: wheat;
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
-.box__wrap::after {
-  content: "";
-  clear: both;
-  display: block;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  text-align: center;
+  padding: 0;
+  margin: 0 auto;
+  font-size: 13pt;
+  overflow: hidden;
+  color: #fff;
+}
+.warp {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.top {
+  background-color: steelblue;
+}
+.header {
+  padding: 20px 0;
+}
+.header > div:nth-of-type(2) {
+  font-size: 300%;
+  margin: 0;
+  padding: 0;
+}
+
+.bottom {
+  flex-grow: 1;
+  background-color: #232323;
+}
+
+
+.box__wrap {
+  padding: 50px;
 }
 .box {
   width: 50px;
   height: 50px;
   border: 1px solid #000;
+  border-radius: 50%;
   float: left;
 }
-.sameColor {
-  width: 50px;
-  height: 50px;
-  border: 1px solid #000;
-}
+
+
+/* transition,
+ transform: translateY,
+ transition-timing-function,
+ body class - good / bad
+     */
