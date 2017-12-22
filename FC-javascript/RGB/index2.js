@@ -26,7 +26,7 @@ function draw() {
     el.style.backgroundColor = problem[index];
   });
   document.querySelector('.rgb-text').textContent = problem[correctAnswer];
-  document.querySelector('.score').textContent = stage;
+  document.querySelector('.score').textContent = `score: ${stage}`;
 }
 
 function init() {
@@ -35,20 +35,37 @@ function init() {
   correctAnswer = random3();
 }
 
+let aa;
 
 document.querySelectorAll('.box').forEach((el, index) => {
   el.addEventListener('click', e => {
     if (index === correctAnswer) {
+      document.querySelector('.correct').classList.add('show');
+      el.classList.add('show');
+      aa = el;
       nextStage();
-      draw();
+      // draw();
+
     } else {
-      stage = 0;
+      document.querySelector('.wrong').classList.add('show');
+      document.querySelector('.modal-score').textContent = `score: ${stage}`;
+      el.classList.add('show');
+      aa = el;
       init();
-      draw();
+      // draw();
     }
+
+
   });
 });
-
+document.querySelectorAll('.modal-button').forEach((el, index) => {
+  el.addEventListener('click', e => {
+    el.classList.remove('show');
+    aa.classList.remove('show');
+    el.parentElement.parentElement.classList.remove('show');
+    draw();
+  })
+})
 
 
 init();
