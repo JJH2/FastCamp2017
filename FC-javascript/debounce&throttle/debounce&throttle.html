@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="debounce">
+    <input type="text" id="throttle">
+    <div></div>
+
+    <script>
+        // debounce
+        function debounce(cb, time) {
+            let timeoutId;
+            return function () {
+                if (timeoutId) {
+                    clearTimeout(timeoutId);
+                }
+                timeoutId = setTimeout(() => {
+                    cb();
+                    timeoutId = null;
+                }, time)
+            }
+        }
+        // debounce 실행
+        const debounceListener = debounce(() => {
+            console.log('alert');
+        }, 1000)
+        document.querySelector('#debounce').addEventListener('input', debounceListener);
+
+        // throttle
+        function throttle(cb, time) {
+            let throttled = false;
+            let timeoutId;
+            return function () {
+                if (!timeoutId) {
+                    timeoutId = setTimeout(() => {
+                        throttled = false;
+                        timeoutId = null;
+                    }, time);
+                }
+                if (!throttled) {
+                    cb();
+                }
+                throttled = true;
+            }
+        }
+        // throttle 변수 선언
+        const throttledAppendChat = throttle(function () {
+            const chatInput = document.querySelector('#throttle');
+            const pEl = document.createElement('p');
+            pEl.textContent = chatInput.value;
+            document.querySelector('div').appendChild(pEl);
+            chatInput.value = '';
+        }, 5000);
+        // throttle 실행
+        document.querySelector('#throttle').addEventListener('keydown', e => {
+            console.log(e);
+            console.log(e.currentTarget.value);
+            if (e.key === 'Enter') {
+                throttledAppendChat();
+            }
+        });
+
+    </script>
+</body>
+</html>
