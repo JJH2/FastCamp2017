@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang=“en”>
+
+<head>
+    <meta charset=“UTF-8 ">
+   <meta name=“viewport” content=“width=device-width, initial-scale=1.0">
+    <meta http-equiv=“X-UA-Compatible” content=“ie=edge”>
+    <title>Document</title>
+    <style>
+        .outer {
+            position: relative;
+            margin: 50px;
+            height: 300px;
+            background: green;
+        }
+
+        .box {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 10px;
+            left: 10px;
+            background: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class=“outer”>
+        <div class=“box”></div>
+    </div>
+    <script>
+        // 드래그 앤 드롭
+        let dragging = false;
+        const box = document.querySelector('.box');
+        box.addEventListener('mousedown', e => {
+            console.log('mousedown');
+            dragging = true;
+            //클릭이 일어난 순간에 상대적 위치 저장
+            //el.offsetLeft, el.offsetTop
+            //el.getBoundingClientRect()
+        });
+        box.addEventListener('mouseup', e => {
+            console.log('mouseup');
+            dragging = false;
+        });
+        box.addEventListener('mousemove', e => {
+            console.log('mousemove');
+            console.log(box.getBoundingClientRect());
+            if (dragging) {
+                //상대적 위치를 유지하며 박스 위치 변경
+                box.style.left = `${e.clientX}px`;
+                box.style.top = `${e.clientY}px`;
+            }
+            // console.log(e.clientX, e.clientY);
+        });
+    </script>
+</body>
+
+</html>
