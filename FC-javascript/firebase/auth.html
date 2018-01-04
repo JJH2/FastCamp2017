@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+    <div class="display">
+        <button class="login">로그인</button>
+    </div>
+        <div class="display-name"></div>
+        <div class="email"></div>
+        <img src="" alt="" class="profile-img">
+        <ul>
+             
+        </ul>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBaqexNKsO583fwqg4wCXwUjO8z2216UBQ",
+            authDomain: "fastcamp-a9840.firebaseapp.com",
+            databaseURL: "https://fastcamp-a9840.firebaseio.com",
+            projectId: "fastcamp-a9840",
+            storageBucket: "",
+            messagingSenderId: "203030330594"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script>
+    var provider = new firebase.auth.GithubAuthProvider();
+
+    document.querySelector('.login').addEventListener('click', async e => {
+        const result = await firebase.auth().signInWithPopup(provider);
+
+        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        console.log(token);
+        console.log(user);
+        document.querySelector('.display-name').textContent = user.displayName;
+        document.querySelector('.email').textContent = user.email;
+        document.querySelector('.profile-img').src = user.photoURL;
+        // ...
+        document.querySelector('.display').classList.add("display-none");
+        document.querySelector('.display-none').style.display = "none";
+        // https://api.github.com/user/repos?access_token=OAUTH-TOKEN
+        const res = await fetch(`https://api.github.com/user/repos?access_token=${token}`);
+        const repos = await res.json();
+
+        repos.forEach(item => {
+            let repoEl = document.createElement('li');
+            repoEl.textContent = item.full_name;
+            document.querySelector('ul').appendChild(repoEl);
+        })
+        console.log(repos);
+    })
+
+    </script>
+</body>
+</html>
