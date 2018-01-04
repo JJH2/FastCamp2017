@@ -21,36 +21,51 @@
             top: 10px;
             left: 10px;
             background: gold;
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
-    <div class=“outer”>
-        <div class=“box”></div>
+    <div class="outer">
+        <div class="box">drag&drop</div>
     </div>
     <script>
         // 드래그 앤 드롭
         let dragging = false;
         const box = document.querySelector('.box');
+        let originalX;
+        let originalY;
+        let originalLeft;
+        let originalTop;
         box.addEventListener('mousedown', e => {
             console.log('mousedown');
             dragging = true;
+            originalX = e.clientX;
+            originalY = e.clientY;
+            originalLeft = box.offsetLeft;
+            originalTop = box.offsetTop;
             //클릭이 일어난 순간에 상대적 위치 저장
             //el.offsetLeft, el.offsetTop
             //el.getBoundingClientRect()
         });
-        box.addEventListener('mouseup', e => {
+        document.addEventListener('mouseup', e => {
             console.log('mouseup');
             dragging = false;
         });
-        box.addEventListener('mousemove', e => {
+        document.addEventListener('mousemove', e => {
             console.log('mousemove');
-            console.log(box.getBoundingClientRect());
             if (dragging) {
                 //상대적 위치를 유지하며 박스 위치 변경
-                box.style.left = `${e.clientX}px`;
-                box.style.top = `${e.clientY}px`;
+                const diffX = e.clientX - originalX;
+                const diffY = e.clientY - originalY;
+                const largeBox = document.querySelector('.outer').getBoundingClientRect();
+                const smallBox = box.getBoundingClientRect();
+
+                const resultX = Math.min(Math.max(0, originalLeft + diffX), largeBox.width - smallBox.width);
+                const resultY = Math.min(Math.max(0, originalTop + diffY), largeBox.height - smallBox.height);
+                box.style.left = `${resultX}px`;
+                box.style.top = `${resultY}px`;
             }
             // console.log(e.clientX, e.clientY);
         });
