@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <label for="input">input</label>
+    <input type="text" class="input" id="input">
+    <label for="change">change</label>
+    <input type="text" class="change" id="change">
+    <label for="checkbox">checkbox</label>
+    <input type="checkbox" class="checkbox" id="checkbox">
+
+    <div contenteditable>
+        hello world
+    </div>
+    
+    <script>
+        document.querySelector('.input').addEventListener('input', e => {
+            console.log('input');
+            console.log(e.value);
+        })
+        document.querySelector('.change').addEventListener('change', e => {
+            console.log('change');
+        })
+        document.querySelector('.checkbox').addEventListener('input', e => {
+            console.log('checkbox input');
+        })
+        document.querySelector('.checkbox').addEventListener('change', e => {
+            console.log('checkbox change');
+        })
+
+        document.querySelector('div').addEventListener('input', e => {
+            console.log('div input');
+        })
+    </script>
+</body>
+</html>
