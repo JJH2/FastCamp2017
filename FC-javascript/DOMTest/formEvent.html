@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+
+    </style>
 </head>
+
 <body>
+    <div contenteditable>
+        hello world
+    </div>
     <label for="input">input</label>
     <input type="text" class="input" id="input">
     <label for="change">change</label>
@@ -14,27 +21,46 @@
     <label for="checkbox">checkbox</label>
     <input type="checkbox" class="checkbox" id="checkbox">
 
-    <div contenteditable>
-        hello world
-    </div>
+    <label for="focus">focus</label>
+    <input type="text" class="focus" id="focus">
     
+    <form method="POST" action="http://httpbin.org/post">
+        <input type="text" name="id">
+        <input type="password" name="password">
+        <input type="submit" value="전송">
+    </form>
     <script>
+        // div contentdeditable
+        document.querySelector('div').addEventListener('input', e => {
+            console.log('div input');
+        })
+        // input
         document.querySelector('.input').addEventListener('input', e => {
             console.log('input');
-            console.log(e.value);
         })
+        // change
         document.querySelector('.change').addEventListener('change', e => {
             console.log('change');
         })
+        // checkbox
         document.querySelector('.checkbox').addEventListener('input', e => {
             console.log('checkbox input');
         })
         document.querySelector('.checkbox').addEventListener('change', e => {
             console.log('checkbox change');
         })
-
-        document.querySelector('div').addEventListener('input', e => {
-            console.log('div input');
+        // focus
+        document.querySelector('.focus').addEventListener('focus', e => {
+            console.log('focus focus');
+        })
+        document.querySelector('.focus').addEventListener('blur', e => {
+            console.log('focus blur');
+        })
+        // form submit
+        document.querySelector('form').addEventListener('submit', e => {
+            e.preventDefault();
+            console.log(e.currentTarget);
+            // (!(e.currentTarget.elements.id.value === '') && !(e.currentTarget.elements.password.value === '')) ? alert('ok') : e.preventDefault()
         })
     </script>
 </body>
