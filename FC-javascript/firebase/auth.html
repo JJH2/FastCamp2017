@@ -14,9 +14,10 @@
         <div class="display-name"></div>
         <div class="email"></div>
         <img src="" alt="" class="profile-img">
-        <ul>
-             
-        </ul>
+        <ul></ul>
+
+        <input type="text" class="new-todo">
+
     <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
     <script>
         // Initialize Firebase
@@ -57,9 +58,23 @@
             repoEl.textContent = item.full_name;
             document.querySelector('ul').appendChild(repoEl);
         })
+
+        firebase.database().ref('todos').on('value', snapshot => {
+            console.log(snapshot.val());
+        })
         console.log(repos);
     })
 
+    document.querySelector('.new-todo').addEventListener('keydown', async e => {
+        if (e.key === 'Enter') {
+            // input 속 값을 firebase로 전송
+            firebase.database().ref('todos').push({
+                content: e.currentTarget.value
+            })
+            // input 속 값을 비워주기
+            e.currentTarget.value = '';
+        }
+    })
     </script>
 </body>
 </html>
