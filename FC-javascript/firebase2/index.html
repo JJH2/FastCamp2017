@@ -12,7 +12,7 @@
         <input type="text" class="content" name="content">
         <!-- <button type="submit" value="submit" class="submit">제출</button> -->
     </div>
-    
+    <ul class="list"></ul>
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 <script>
     // Initialize Firebase
@@ -42,18 +42,27 @@
         userId = user.email;
         console.log(user);
         console.log(userId);
-        // ...
+
         firebase.database().ref('users/').on('value', snapshot => {
+            // 기존 리스트 제거
+            let list = document.querySelector('.list');
+            while (list.firstChild) {
+                list.removeChild(list.firstChild);
+            };
+            // snapshot이 객체이므로 배열로 만들어줌 -> Object.entries()
             let data = Object.entries(snapshot.val());
+
+            
             data.forEach(element => {
-                let ul = document.createElement('ul');
+                let ul = document.querySelector('.list');
                 let li = document.createElement('li');
-                li.textContent = element[1].userId;
-                li.textContent = element[1].contentl;
-                ul.appendChild(li);
+                let btn = document.createElement('button');
                 console.log(element);
-                console.log(element[1].userId);
-                console.log(element[1].content);
+                li.textContent = `${element[1].userId} ${element[1].content}`;
+                btn.value = 'delete';
+                btn.textContent = 'delete';
+                ul.appendChild(li);
+                ul.appendChild(btn);
             });
         });
     })
@@ -66,14 +75,9 @@
             console.log(content);
             firebase.database().ref(`users/`).push({
                 userId: userId,
-                content: content
+                content: content,
             });
-            // firebase.database().ref('users/').once('value', function (snapshot) {
-            //     console.log(snapshot.val());
-            // });
-            
         }
-       
     })
 </script>
 </body>
