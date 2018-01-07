@@ -60,6 +60,48 @@
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var database, user
+        var config = {
+          apiKey: "AIzaSyDKbO_7GHKTh1x9EI84yWqsMOy7TE9f_2o",
+          authDomain: "todolist-7e480.firebaseapp.com",
+          databaseURL: "https://todolist-7e480.firebaseio.com",
+          projectId: "todolist-7e480",
+          storageBucket: "todolist-7e480.appspot.com",
+          messagingSenderId: "284908316700"
+        };
+        firebase.initializeApp(config);
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function (result) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          var token = result.credential.accessToken;
+          // The signed-in user info.
+          user = result.user;
+          console.log(user);
+          database = firebase.database();
 
+
+          // ...
+        }).catch(function (error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          // ...
+        });
+
+        function get_memo_list() {
+          let memoRef = database.ref('memos/' + user.uid);
+          memoRef.on('child_added', function (data) {
+            console.log(data.val());
+          })
+        }
+        get_memo_list()
+      </script>
     </body>
   </html>

@@ -1,0 +1,32 @@
+[debug] [2018-01-07T11:44:24.890Z] ----------------------------------------------------------------------
+[debug] [2018-01-07T11:44:24.892Z] Command:       /Users/jangjaehun/.nvm/versions/node/v8.9.1/bin/node /Users/jangjaehun/.nvm/versions/node/v8.9.1/bin/firebase serve
+[debug] [2018-01-07T11:44:24.892Z] CLI Version:   3.16.0
+[debug] [2018-01-07T11:44:24.892Z] Platform:      darwin
+[debug] [2018-01-07T11:44:24.892Z] Node Version:  v8.9.1
+[debug] [2018-01-07T11:44:24.892Z] Time:          Sun Jan 07 2018 20:44:24 GMT+0900 (KST)
+[debug] [2018-01-07T11:44:24.892Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-07T11:44:24.902Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-07T11:44:24.902Z] > authorizing via signed-in user
+[debug] [2018-01-07T11:44:24.903Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/todolist-7e480  
+  
+ Sun Jan 07 2018 20:44:24 GMT+0900 (KST)
+[debug] [2018-01-07T11:44:25.924Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-07T11:44:25.925Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/todolist-7e480/tokens  
+  
+ Sun Jan 07 2018 20:44:25 GMT+0900 (KST)
+[debug] [2018-01-07T11:44:26.638Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/jangjaehun/Documents/FastCamp2017/FC-javascript/firebase3'...
+[info] 
+[debug] [2018-01-07T11:44:26.641Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/todolist-7e480  
+  
+ Sun Jan 07 2018 20:44:26 GMT+0900 (KST)
+[debug] [2018-01-07T11:44:27.153Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-07T11:44:27.155Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/284908316700/clients/_:getWebAppConfig  
+  
+ Sun Jan 07 2018 20:44:27 GMT+0900 (KST)
+[debug] [2018-01-07T11:44:28.804Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+
