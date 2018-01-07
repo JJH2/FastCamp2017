@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button class="login" value="login">로그인</button>
+    <div>
+        <input type="text" class="content" name="content">
+        <!-- <button type="submit" value="submit" class="submit">제출</button> -->
+    </div>
+    
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCyA2eYBGHMTWxOiBIP23Izr66Szr2tCUM",
+        authDomain: "todolist1-82ee0.firebaseapp.com",
+        databaseURL: "https://todolist1-82ee0.firebaseio.com",
+        projectId: "todolist1-82ee0",
+        storageBucket: "todolist1-82ee0.appspot.com",
+        messagingSenderId: "711342994667"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script>
+    let userId;
+
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+    document.querySelector('.login').addEventListener('click', async e => {
+        const result = await firebase.auth().signInWithPopup(provider);
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        console.log(token);
+        // The signed-in user info.
+        var user = result.user;
+        userId = user.email;
+        console.log(user);
+        console.log(userId);
+        // ...
+        firebase.database().ref('users/').on('value', snapshot => {
+            let data = Object.entries(snapshot.val());
+            data.forEach(element => {
+                let ul = document.createElement('ul');
+                let li = document.createElement('li');
+                li.textContent = element[1].userId;
+                li.textContent = element[1].contentl;
+                ul.appendChild(li);
+                console.log(element);
+                console.log(element[1].userId);
+                console.log(element[1].content);
+            });
+        });
+    })
+    
+    document.querySelector('.content').addEventListener('keydown', async e => {
+        if (e.key === 'Enter') {
+            console.log(e);
+            console.log(e.target);
+            let content = e.currentTarget.value;
+            console.log(content);
+            firebase.database().ref(`users/`).push({
+                userId: userId,
+                content: content
+            });
+            // firebase.database().ref('users/').once('value', function (snapshot) {
+            //     console.log(snapshot.val());
+            // });
+            
+        }
+       
+    })
+</script>
+</body>
+</html>
