@@ -41,6 +41,7 @@
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
+        console.log(result);
         console.log(token);
         console.log(user);
         document.querySelector('.display-name').textContent = user.displayName;
