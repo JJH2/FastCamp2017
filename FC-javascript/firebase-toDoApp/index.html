@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html, body {
+      margin: 0 auto;
+      padding: 0;
+    }
+    .todo__form {
+      margin: 0 auto;
+      text-align: center;
+    }
+    .inputText {
+      width: 400px;
+      padding: 20px;
+    }
+    .submit {
+      padding: 20px;
+    }
+  </style>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <button class="btn" value="login">login</button>
+  <div class="todo__form">
+    <input type="text" class="inputText">
+    <button type="submit" class="submit">submit</button>
+    <ul class="todo-list"></ul>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCCuaQwDDx1XYUdd6wZas0NygQWa2Wx1H4",
+      authDomain: "fastcampus-todolist.firebaseapp.com",
+      databaseURL: "https://fastcampus-todolist.firebaseio.com",
+      projectId: "fastcampus-todolist",
+      storageBucket: "",
+      messagingSenderId: "203274123525"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="./index.js"></script>
+</body>
+</html>
