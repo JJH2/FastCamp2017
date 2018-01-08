@@ -61,6 +61,10 @@
                 li.textContent = `${element[1].userId} ${element[1].content}`;
                 btn.value = 'delete';
                 btn.textContent = 'delete';
+                btn.addEventListener('click', function () {
+                    firebase.database().ref(`users/${element[0]}`).remove();
+                })
+                
                 ul.appendChild(li);
                 ul.appendChild(btn);
             });
@@ -73,7 +77,7 @@
             console.log(e.target);
             let content = e.currentTarget.value;
             console.log(content);
-            firebase.database().ref(`users/`).push({
+            await firebase.database().ref(`users/`).push({
                 userId: userId,
                 content: content,
             });
