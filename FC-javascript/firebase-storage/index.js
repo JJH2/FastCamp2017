@@ -7,8 +7,6 @@ const loginButtonEl = document.querySelector('.login');
 const fileInputEl = document.querySelector('.file-input');
 const submitButtonEl = document.querySelector('.submit');
 
-// 사진 이름과 downloadURL을 저장한다.
-let arr = [];
 
 // login
 loginButtonEl.addEventListener('click', async e => {
@@ -17,23 +15,7 @@ loginButtonEl.addEventListener('click', async e => {
 
 // database submit
 submitButtonEl.addEventListener('click', async e => {
-    let uid = auth.currentUser.uid;
-    const getEpochTime = new Date().getTime();
-    const refStr = `${uid}:${getEpochTime}`;
-    const snapshot = await storage.ref(`/images/${refStr}`).put(fileInputEl.files[0]);
-
-    arr.push({
-        fileName: `${refStr}`,
-        downloadURL: `${snapshot.downloadURL}`
-    });
-    console.log(arr);
-
-    const imageEl = document.createElement('img');
-    imageEl.src = snapshot.downloadURL;
-    imageEl.style.width = `50px`;
-    document.body.appendChild(imageEl);
-
-    await database.ref(`users/${uid}/pic`).push(arr)
+    imageToStorage();
 })
 
 
@@ -45,11 +27,31 @@ async function authUsers() {
     console.log(result);
 }
 
+async function imageToStorage() {
+    let uid = auth.currentUser.uid;
+    const getEpochTime = new Date().getTime();
+    const refStr = `${uid}:${getEpochTime}`;
+    const snapshot = await storage.ref(`/images/${refStr}`).put(fileInputEl.files[0]);
+    const snapshotDownloadURL = snapshot.downloadURL;
+    const imageEl = document.createElement('img');
+    imageEl.src = snapshotDownloadURL;
+    imageEl.style.width = `50px`;
+    document.body.appendChild(imageEl);
 
+    dataToDatabase(refStr, snapshotDownloadURL);
+}
 
+async function dataToDatabase(a, b) {
+    let uid = auth.currentUser.uid;
+    await database.ref(`users/${uid}/pic`).push({
+        fileName: a,
+        downloadURL: b
+    })
+}
+
+// 세가지 상황에서 동작한다. login / logout / refresh(?) 
 auth.onAuthStateChanged(function (user) {
     if (user) {
-        // User is signed in.
         authUsers();
     } else {
         // No user is signed in.
