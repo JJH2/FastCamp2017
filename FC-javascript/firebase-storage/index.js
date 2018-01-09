@@ -24,6 +24,7 @@ async function authUsers() {
     var token = result.credential.accessToken;
     var user = result.user;
     console.log(result);
+    picRender();
 }
 
 async function imageToStorage() {
@@ -31,9 +32,9 @@ async function imageToStorage() {
     const getEpochTime = new Date().getTime();
     const refStr = `${uid}:${getEpochTime}`;
     let snapshot = await storage.ref(`/images/${refStr}`).put(fileInputEl.files[0]);
-    const snapshotDownloadURL = snapshot.downloadURL;
+    let snapshotDownloadURL = snapshot.downloadURL;
     
-    
+    console.log(snapshotDownloadURL);
 
     dataToDatabase(refStr, snapshotDownloadURL);
 }
@@ -44,18 +45,23 @@ async function dataToDatabase(a, b) {
         fileName: a,
         downloadURL: b
     })
-
-    
+    picRender();
+}
+async function picRender() {
+    document.querySelector('.image-list').innerHTML = '';
+    let uid = auth.currentUser.uid;
     let snapshot = await database.ref(`users/${uid}/pic`).once('value');
-    let picInfo = snapshot.val();
+    let picInfo = await snapshot.val();
     console.log(picInfo);
     console.log(Object.entries(picInfo));
-    console.log(Object.entries(picInfo[1]));
-    for (let [fileName, downLoadURL] of Object.entries(picInfo)) {
+    for (let [picId, { downloadURL, fileName }] of Object.entries(picInfo)) {
         const imageListEl = document.querySelector('.image-list');
         const imageEl = document.createElement('img');
         const imageTextEl = document.createElement('p');
-        imageEl.src = DownloadURL;
+        console.log(picId);
+        console.log(fileName);
+        console.log(downloadURL);
+        imageEl.src = downloadURL;
         imageEl.classList.add('image-list__item');
 
         imageTextEl.textContent = fileName;
@@ -64,9 +70,7 @@ async function dataToDatabase(a, b) {
         imageListEl.appendChild(imageEl);
         imageListEl.appendChild(imageTextEl);
     }
-   
 }
-
 // 세가지 상황에서 동작한다. login / logout / refresh(?) 
 auth.onAuthStateChanged(function (user) {
     if (user) {
