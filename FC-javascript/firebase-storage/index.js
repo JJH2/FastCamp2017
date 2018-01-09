@@ -7,7 +7,6 @@ const loginButtonEl = document.querySelector('.login');
 const fileInputEl = document.querySelector('.file-input');
 const submitButtonEl = document.querySelector('.submit');
 
-
 // login
 loginButtonEl.addEventListener('click', async e => {
     authUsers();
@@ -31,12 +30,10 @@ async function imageToStorage() {
     let uid = auth.currentUser.uid;
     const getEpochTime = new Date().getTime();
     const refStr = `${uid}:${getEpochTime}`;
-    const snapshot = await storage.ref(`/images/${refStr}`).put(fileInputEl.files[0]);
+    let snapshot = await storage.ref(`/images/${refStr}`).put(fileInputEl.files[0]);
     const snapshotDownloadURL = snapshot.downloadURL;
-    const imageEl = document.createElement('img');
-    imageEl.src = snapshotDownloadURL;
-    imageEl.style.width = `50px`;
-    document.body.appendChild(imageEl);
+    
+    
 
     dataToDatabase(refStr, snapshotDownloadURL);
 }
@@ -47,6 +44,27 @@ async function dataToDatabase(a, b) {
         fileName: a,
         downloadURL: b
     })
+
+    
+    let snapshot = await database.ref(`users/${uid}/pic`).once('value');
+    let picInfo = snapshot.val();
+    console.log(picInfo);
+    console.log(Object.entries(picInfo));
+    console.log(Object.entries(picInfo[1]));
+    for (let [fileName, downLoadURL] of Object.entries(picInfo)) {
+        const imageListEl = document.querySelector('.image-list');
+        const imageEl = document.createElement('img');
+        const imageTextEl = document.createElement('p');
+        imageEl.src = DownloadURL;
+        imageEl.classList.add('image-list__item');
+
+        imageTextEl.textContent = fileName;
+        imageTextEl.classList.add('image-list__item-text');
+
+        imageListEl.appendChild(imageEl);
+        imageListEl.appendChild(imageTextEl);
+    }
+   
 }
 
 // 세가지 상황에서 동작한다. login / logout / refresh(?) 
