@@ -63,7 +63,7 @@
       <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
       <script>
         // Initialize Firebase
-        var database, user
+        var database, user, userInfo
         var config = {
           apiKey: "AIzaSyDKbO_7GHKTh1x9EI84yWqsMOy7TE9f_2o",
           authDomain: "todolist-7e480.firebaseapp.com",
@@ -73,35 +73,65 @@
           messagingSenderId: "284908316700"
         };
         firebase.initializeApp(config);
-        var provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider).then(function (result) {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          var token = result.credential.accessToken;
-          // The signed-in user info.
-          user = result.user;
-          console.log(user);
-          database = firebase.database();
 
+        database = firebase.database();
+        auth = firebase.auth();
+        var authProvider = new firebase.auth.GoogleAuthProvider();
 
-          // ...
-        }).catch(function (error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // The email of the user's account used.
-          var email = error.email;
-          // The firebase.auth.AuthCredential type that was used.
-          var credential = error.credential;
-          // ...
-        });
+        auth.onAuthStateChanged(function(user) {
+          if (user) {
+            console.log('success');
+            // let uid = firebase.auth().currentUser.uid;
+            console.log(user);
+            userInfo = user;
+            get_memo_list();
+          } else {
+            auth.signInWithPopup(authProvider);
+          }
+        })
 
         function get_memo_list() {
-          let memoRef = database.ref('memos/' + user.uid);
-          memoRef.on('child_added', function (data) {
-            console.log(data.val());
+          var memoRef = database.ref('memos/' + userInfo.uid);
+          memoRef.on('child_added', on_child_added);
+        }
+        function on_child_added(data) {
+          var key = data.key;
+          var memoData = data.val();
+          var txt = memoData.txt;
+          var title = memoData.title;
+          var firstTxt = txt.substr(0, 1);
+          var html =
+            "<li id='" + key + "' class=\"collection-item avatar\" onclick=\"fn_get_data_one(this.id);\" >" +
+            "<i class=\"material-icons circle red\">" + firstTxt + "</i>" +
+            "<span class=\"title\">" + title + "</span>" +
+            "<p class='txt'>" + txt + "<br>" +
+            "</p>" +
+            "</li>";
+
+          $('.collection').append(html);
+        }
+
+
+        function save_data() {
+          var memoRef = database.ref('memos/' + userInfo.uid);
+          var txt = $('.textarea').val()
+          var title = txt.indexOf('\n');
+          if (txt === '') {
+            return false;
+          }
+          memoRef.push({
+            txt: txt,
+            createDate: new Date().getTime()
           })
         }
-        get_memo_list()
+
+
+        $(function() {
+          $(".textarea").blur(function() {
+            console.log('d')
+            save_data();
+          })
+        })
       </script>
     </body>
   </html>
