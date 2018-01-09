@@ -9,8 +9,9 @@ document.querySelector('.btn').addEventListener('click', async e => {
 });
 
 const inputText = document.querySelector('.inputText');
+const submitText = document.querySelector('.submit');
 
-inputText.addEventListener('keydown', async e => {
+inputText.addEventListener('keypress', async e => {
 
   if (e.key === 'Enter') {
     const todoList = document.querySelector('.todo-list');
@@ -26,6 +27,19 @@ inputText.addEventListener('keydown', async e => {
     refreshTodos();
   }
 })
+submitText.addEventListener('click', async e => {
+  const todoList = document.querySelector('.todo-list');
+  todoList.classList.add('todo-list--loading');
+
+  const uid = firebase.auth().currentUser.uid;
+  console.log(uid);
+  await firebase.database().ref(`/users/${uid}/todos`).push({
+    title: inputText.value,
+    complete: false
+  })
+  inputText.value = "";
+  refreshTodos();
+});
 async function refreshTodos() {
 
   const todoList = document.querySelector('.todo-list');
@@ -33,18 +47,36 @@ async function refreshTodos() {
   const uid = firebase.auth().currentUser.uid;
   const snapshot = await firebase.database().ref(`/users/${uid}/todos`).once('value');
 
-  while (todoList.firstChild) {
-    todoList.removeChild(todoList.firstChild);
-  };
+  // 컨텐츠 삭제하기
+  // while (todoList.firstChild) {
+  //   todoList.removeChild(todoList.firstChild);
+  // };
+  todoList.innerHTML = '';
 
   const todos = snapshot.val();
   for (let [todoId, todo] of Object.entries(todos)) {
     console.log(todoId, todo);
     const liEl = document.createElement('li');
+    const btnEl = document.createElement('button');
     liEl.textContent = todo.title;
+    liEl.classList.add('todo-list__item');
+    btnEl.textContent = 'x';
+    if (todo.complete === true) {
+      liEl.classList.add('todo-list__item--complete');
+    }
+    liEl.addEventListener('click', async e => {
+      await firebase.database().ref(`/users/${uid}/todos/${todoId}`).update({
+        complete: !todo.complete
+      });
+      refreshTodos();
+    })
+    btnEl.addEventListener('click', async e => {
+      await firebase.database().ref(`/users/${uid}/todos/${todoId}`).remove();
+      refreshTodos();
+    })
     todoList.appendChild(liEl);
+    todoList.appendChild(btnEl);
   }
-
   todoList.classList.remove('todo-list--loading');
 }
 
