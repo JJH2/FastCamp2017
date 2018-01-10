@@ -8,7 +8,7 @@ const provider = new firebase.auth.GoogleAuthProvider();
 const loginButtonEl = document.querySelector('.login');
 const fileInputEl = document.querySelector('.file-input');
 
-let nextKey;
+const keyStack = [];
 
 loginButtonEl.addEventListener('click', async e => {
     
@@ -35,20 +35,21 @@ fileInputEl.addEventListener('change', async e => {
     refreshImages();
 })
 
-async function refreshImages() {
+async function refreshImages(a) {
     const imageListEl = document.querySelector('.image');
     // 실시간 데이터베이스에서 이미지 정보 가져오기
     const snapshot = await database
         .ref(`/images/`)
         .orderByKey()
         .limitToFirst(IMAGE_PER_PAGE + 1)
-        .startAt(nextKey || "")
+        .startAt(keyStack[keyStack.length - 1] || "") // nextKey가 falsy이면 ""을 삽입한다.
         .once('value');
     const getImages = snapshot.val();
     
     // 마지막 키를 저장하기 (페이지네이션)
     const keys = Object.keys(getImages);
-    nextKey = keys[keys.length - 1];
+    
+    keyStack.push(keys[keys.length - 1]);
     // 이미지 표시해주기
     imageListEl.innerHTML = '';
     const imageArr = Object.values(getImages).slice(0, IMAGE_PER_PAGE);
@@ -81,5 +82,10 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
 document.querySelector('.next-botton').addEventListener('click', async e => {
-    refreshImages();
+    refreshImages('next');
+})
+document.querySelector('.prev-botton').addEventListener('click', async e => {
+    keyStack.pop();
+    keyStack.pop();
+    refreshImages('prev');
 })
