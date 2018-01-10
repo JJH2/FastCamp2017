@@ -4,6 +4,10 @@ html, body {
   height: 100%;
   background: floralwhite;
 }
+.container {
+  max-width: 800px;
+  margin: auto;
+}
 .todo__form {
   margin: 0 auto;
   text-align: center;

@@ -11,7 +11,7 @@ document.querySelector('.btn').addEventListener('click', async e => {
 const inputText = document.querySelector('.inputText');
 const submitText = document.querySelector('.submit');
 
-inputText.addEventListener('keydown', async e => {
+inputText.addEventListener('keypress', async e => {
 
   if (e.key === 'Enter') {
     const todoList = document.querySelector('.todo-list');
