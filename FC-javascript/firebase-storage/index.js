@@ -7,19 +7,21 @@ const loginButtonEl = document.querySelector('.login');
 const fileInputEl = document.querySelector('.file-input');
 const submitButtonEl = document.querySelector('.submit');
 
+let uid;
 // login
-loginButtonEl.addEventListener('click', async e => {
+loginButtonEl.addEventListener('click', e => {
     authUsers();
 })
 
 // database submit
-submitButtonEl.addEventListener('click', async e => {
+submitButtonEl.addEventListener('click', e => {
     imageToStorage();
 })
 
 
 
 async function authUsers() {
+    uid = auth.currentUser.uid;
     const result = await auth.signInWithPopup(provider);
     var token = result.credential.accessToken;
     var user = result.user;
@@ -28,7 +30,6 @@ async function authUsers() {
 }
 
 async function imageToStorage() {
-    let uid = auth.currentUser.uid;
     const getEpochTime = new Date().getTime();
     const refStr = `${uid}:${getEpochTime}`;
     let snapshot = await storage.ref(`/images/${refStr}`).put(fileInputEl.files[0]);
@@ -40,16 +41,15 @@ async function imageToStorage() {
 }
 
 async function dataToDatabase(a, b) {
-    let uid = auth.currentUser.uid;
     await database.ref(`users/${uid}/pic`).push({
         fileName: a,
         downloadURL: b
     })
     picRender();
 }
+
 async function picRender() {
     document.querySelector('.image-list').innerHTML = '';
-    let uid = auth.currentUser.uid;
     let snapshot = await database.ref(`users/${uid}/pic`).once('value');
     let picInfo = await snapshot.val();
     console.log(picInfo);
