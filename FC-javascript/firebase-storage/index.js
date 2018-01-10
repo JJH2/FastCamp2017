@@ -45,6 +45,7 @@ async function refreshImages() {
         liEl.classList.add('image-list');
         imageEl.src = imageInfo.downloadURL;
         imageEl.classList.add('image-list__item');
+        pEl.classList.add('image-list__name');
         pEl.textContent = imageInfo.fileName;
         imageListEl.appendChild(liEl);
 
