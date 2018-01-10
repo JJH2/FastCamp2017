@@ -34,18 +34,22 @@ fileInputEl.addEventListener('change', async e => {
 async function refreshImages() {
 
     
-    const imageListEl = document.querySelector('.image-list');
+    const imageListEl = document.querySelector('.image');
     const snapshot = await database.ref(`/images/`).once('value');
     const getImages = snapshot.val();
 
     for (let [imageId, imageInfo] of Object.entries(getImages)) {
+        const liEl = document.createElement('li');
         const imageEl = document.createElement('img');
         const pEl = document.createElement('p');
+        liEl.classList.add('image-list');
         imageEl.src = imageInfo.downloadURL;
-        imageEl.classList.add('image');
+        imageEl.classList.add('image-list__item');
         pEl.textContent = imageInfo.fileName;
-        imageListEl.appendChild(imageEl);
-        imageListEl.appendChild(pEl);
+        imageListEl.appendChild(liEl);
+
+        liEl.appendChild(imageEl)
+        liEl.appendChild(pEl);
     }
 }
 
