@@ -40,12 +40,14 @@ submitText.addEventListener('click', async e => {
   inputText.value = "";
   refreshTodos();
 });
+
+
 async function refreshTodos() {
 
   const todoList = document.querySelector('.todo-list');
 
   const uid = firebase.auth().currentUser.uid;
-  const snapshot = await firebase.database().ref(`/users/${uid}/todos`).once('value');
+  const snapshot = await firebase.database().ref(`/users/${uid}/todos`).orderByKey().limitToLast(5).once('value');
 
   // 컨텐츠 삭제하기
   // while (todoList.firstChild) {
@@ -55,7 +57,7 @@ async function refreshTodos() {
 
   const todos = snapshot.val();
   for (let [todoId, todo] of Object.entries(todos)) {
-    console.log(todoId, todo);
+    // console.log(todoId, todo);
     const liEl = document.createElement('li');
     const btnEl = document.createElement('button');
     liEl.textContent = todo.title;
@@ -77,6 +79,7 @@ async function refreshTodos() {
     todoList.appendChild(liEl);
     todoList.appendChild(btnEl);
   }
+
   todoList.classList.remove('todo-list--loading');
 }
 
