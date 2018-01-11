@@ -3,6 +3,11 @@ button, input {
   border-radius: 5px;
   border: 1px solid #d8d8d8;
 }
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
 html, body {
   margin: 0 auto;
@@ -13,7 +18,7 @@ html, body {
 .container {
   max-width: 800px;
   margin: auto;
-  background: tomato;
+  background: #f2dccf;
 }
 .login::after {
   content: "";
@@ -27,6 +32,7 @@ html, body {
 .todo-form {
   margin: 0 auto;
   text-align: center;
+  padding: 30px 0;
 }
 .todo-form__input {
   width: 400px;
@@ -41,15 +47,16 @@ html, body {
 }
 .todo-list__item--complete {
   transition: all 0.5s;
-  background: rgba(220, 220, 220, 0.3);
-  color: rgba(0, 0, 0, 0.3);
+  background: rgba(220, 220, 220, 0.6);
   text-decoration: line-through;
+  color: #fff;
 }
 * {
   list-style: none;
 }
 .todo-list {
-  position: relative;
+  /* position: relative; */
+  margin: 0 auto;
 }
 .todo-list--loading::after {
   content: "";

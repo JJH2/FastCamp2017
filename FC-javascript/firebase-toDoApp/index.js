@@ -73,11 +73,12 @@ async function refreshTodos() {
       refreshTodos();
     })
     btnEl.addEventListener('click', async e => {
+      e.stopPropagation();
       await firebase.database().ref(`/users/${uid}/todos/${todoId}`).remove();
       refreshTodos();
     })
     todoList.appendChild(liEl);
-    todoList.appendChild(btnEl);
+    liEl.appendChild(btnEl);
   }
 
   todoList.classList.remove('todo-list--loading');
