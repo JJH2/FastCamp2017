@@ -1,5 +1,5 @@
 const provider = new firebase.auth.GoogleAuthProvider();
-document.querySelector('.btn').addEventListener('click', async e => {
+document.querySelector('.login__btn').addEventListener('click', async e => {
   const result = await firebase.auth().signInWithPopup(provider);
   // This gives you a Google Access Token. You can use it to access the Google API.
   var token = result.credential.accessToken;
@@ -8,8 +8,8 @@ document.querySelector('.btn').addEventListener('click', async e => {
   console.log(user);
 });
 
-const inputText = document.querySelector('.inputText');
-const submitText = document.querySelector('.submit');
+const inputText = document.querySelector('.todo-form__input');
+const submitText = document.querySelector('.todo-form_submit');
 
 inputText.addEventListener('keypress', async e => {
 

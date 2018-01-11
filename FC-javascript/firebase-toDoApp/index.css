@@ -1,3 +1,9 @@
+/* 공통 속성 */
+button, input {
+  border-radius: 5px;
+  border: 1px solid #d8d8d8;
+}
+
 html, body {
   margin: 0 auto;
   padding: 0;
@@ -7,26 +13,36 @@ html, body {
 .container {
   max-width: 800px;
   margin: auto;
+  background: tomato;
 }
-.todo__form {
+.login::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.login__btn {
+  float: right;
+  padding: 10px 15px;
+}
+.todo-form {
   margin: 0 auto;
   text-align: center;
-  background: #fafafa;
 }
-.inputText {
+.todo-form__input {
   width: 400px;
-  padding: 20px;
+  padding: 20px 10px;
 }
-.submit {
-  padding: 20px;
+.todo-form_submit {
+  padding: 20px 10px;
 }
 .todo-list__item {
   cursor: pointer;
+  padding: 10px 100px;
 }
 .todo-list__item--complete {
-  transition: all 1s;
-  background: rgba(0, 0, 0, 2);
-  color: rgba(110, 110, 110, 0.8);
+  transition: all 0.5s;
+  background: rgba(220, 220, 220, 0.3);
+  color: rgba(0, 0, 0, 0.3);
   text-decoration: line-through;
 }
 * {
